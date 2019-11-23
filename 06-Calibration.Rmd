@@ -1,0 +1,34 @@
+# Calibration
+
+*This chapter is imcomplete*
+
+| File | Comments | Header | # of column |
+|:------:|:------------------:|:------:|:---------------------:|
+| .cfg.cmaes | Configuration of CMA-ES method | No | - |
+
+Values in .calib.cmaes file:
+
+| Item | Meaning | Default value | Range  | Unit |
+|:------:|:--------------------------:|:---------:|:---------:|:--------:|
+| lambda | Number of children in each generation | 48 |  | - |
+| stopfitness | Threshold to accept the *best* solution | 0.3 |   | - |
+| maxgen | Maximun generations |  48 |   | - |
+| sigma |  | 0.8  |   | - |
+| updateic | Whether to update initial condition after each generation  | 0 | 0/1  | - |
+| walltime | Walltime to kill the modeling thread  |  86400 | 0-inf  | second |
+| nspingup | Number of days for spinup  | 0 | 0-inf  | day |
+|  |  |  |   | - |
+
+
+Values in .calib.range file:
+
+Rows: Values in .cfg.calib file.
+Column:
+| Item | Meaning | Default value | Range  | Unit |
+|:------:|:--------------------------:|:---------:|:---------:|:--------:|
+| On/off | On or Off | 0 | 0/1  | - |
+| log | Whether logrithm | 0 |  0/1  | - |
+| min | Minimun value |  - |  - | - |
+| max | Maximun value |  - |  - | - |
+
+

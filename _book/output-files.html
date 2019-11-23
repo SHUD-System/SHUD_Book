@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Output files | Solver for Hydrologic Unstructured Domain (SHUD)</title>
+  <meta name="description" content="SHUD User Guide" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Output files | Solver for Hydrologic Unstructured Domain (SHUD)" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="SHUD User Guide" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Output files | Solver for Hydrologic Unstructured Domain (SHUD)" />
+  
+  <meta name="twitter:description" content="SHUD User Guide" />
+  
+
+<meta name="author" content="Lele Shu (lele.shu@gmail.com)" />
+
+
+<meta name="date" content="2019-11-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="input-files.html"/>
+<link rel="next" href="applications.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SHUD User Guide</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#standing-on-the-shoulder-of-giant"><i class="fa fa-check"></i><b>1.1</b> Standing on the shoulder of giant</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#brief-history-of-pihm-system"><i class="fa fa-check"></i><b>1.2</b> Brief History of PIHM system</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#steps-of-modeling-with-shud"><i class="fa fa-check"></i><b>1.3</b> Steps of modeling with SHUD</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#essential-terrestrial-variables"><i class="fa fa-check"></i><b>1.3.1</b> Essential Terrestrial Variables?</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#a-priori-data-sources"><i class="fa fa-check"></i><b>1.3.2</b> A-Priori Data Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#workflow-of-shud-modeling-system"><i class="fa fa-check"></i><b>1.4</b> Workflow of SHUD Modeling System</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="install-shud-and-shud-tools.html"><a href="install-shud-and-shud-tools.html"><i class="fa fa-check"></i><b>2</b> Install SHUD and SHUD-tools</a><ul>
+<li class="chapter" data-level="2.1" data-path="install-shud-and-shud-tools.html"><a href="install-shud-and-shud-tools.html#sundialscvode"><i class="fa fa-check"></i><b>2.1</b> SUNDIALS/CVODE</a></li>
+<li class="chapter" data-level="2.2" data-path="install-shud-and-shud-tools.html"><a href="install-shud-and-shud-tools.html#shud"><i class="fa fa-check"></i><b>2.2</b> SHUD</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="install-shud-and-shud-tools.html"><a href="install-shud-and-shud-tools.html#openmp"><i class="fa fa-check"></i><b>2.2.1</b> OpenMP</a></li>
+<li class="chapter" data-level="2.2.2" data-path="install-shud-and-shud-tools.html"><a href="install-shud-and-shud-tools.html#run-shud-executables."><i class="fa fa-check"></i><b>2.2.2</b> Run SHUD executables.</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="install-shud-and-shud-tools.html"><a href="install-shud-and-shud-tools.html#shud-tools"><i class="fa fa-check"></i><b>2.3</b> SHUD-tools</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="input-files.html"><a href="input-files.html"><i class="fa fa-check"></i><b>3</b> Input files</a><ul>
+<li class="chapter" data-level="3.1" data-path="input-files.html"><a href="input-files.html#spatial-data"><i class="fa fa-check"></i><b>3.1</b> Spatial data</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="input-files.html"><a href="input-files.html#sp.mesh-file"><i class="fa fa-check"></i><b>3.1.1</b> .sp.mesh file</a></li>
+<li class="chapter" data-level="3.1.2" data-path="input-files.html"><a href="input-files.html#sp.att-file"><i class="fa fa-check"></i><b>3.1.2</b> .sp.att file</a></li>
+<li class="chapter" data-level="3.1.3" data-path="input-files.html"><a href="input-files.html#sp.riv-file"><i class="fa fa-check"></i><b>3.1.3</b> .sp.riv file</a></li>
+<li class="chapter" data-level="3.1.4" data-path="input-files.html"><a href="input-files.html#sp.rivseg-file"><i class="fa fa-check"></i><b>3.1.4</b> .sp.rivseg file</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="input-files.html"><a href="input-files.html#model-configuration-files"><i class="fa fa-check"></i><b>3.2</b> Model configuration files</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="input-files.html"><a href="input-files.html#cfg.para-file"><i class="fa fa-check"></i><b>3.2.1</b> .cfg.para file</a></li>
+<li class="chapter" data-level="3.2.2" data-path="input-files.html"><a href="input-files.html#cfg.calib-file"><i class="fa fa-check"></i><b>3.2.2</b> .cfg.calib file</a></li>
+<li class="chapter" data-level="3.2.3" data-path="input-files.html"><a href="input-files.html#cfg.ic-file"><i class="fa fa-check"></i><b>3.2.3</b> .cfg.ic file</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="input-files.html"><a href="input-files.html#time-series-data"><i class="fa fa-check"></i><b>3.3</b> Time-series data</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="input-files.html"><a href="input-files.html#tsd.forc-file"><i class="fa fa-check"></i><b>3.3.1</b> .tsd.forc file</a></li>
+<li class="chapter" data-level="3.3.2" data-path="input-files.html"><a href="input-files.html#tsd.lai-file"><i class="fa fa-check"></i><b>3.3.2</b> .tsd.lai file</a></li>
+<li class="chapter" data-level="3.3.3" data-path="input-files.html"><a href="input-files.html#tsd.rl-file"><i class="fa fa-check"></i><b>3.3.3</b> .tsd.rl file</a></li>
+<li class="chapter" data-level="3.3.4" data-path="input-files.html"><a href="input-files.html#tsd.mf-file"><i class="fa fa-check"></i><b>3.3.4</b> .tsd.mf file</a></li>
+<li class="chapter" data-level="3.3.5" data-path="input-files.html"><a href="input-files.html#tsd.obs-file"><i class="fa fa-check"></i><b>3.3.5</b> .tsd.obs file</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="output-files.html"><a href="output-files.html"><i class="fa fa-check"></i><b>4</b> Output files</a><ul>
+<li class="chapter" data-level="4.1" data-path="output-files.html"><a href="output-files.html#output-file-names"><i class="fa fa-check"></i><b>4.1</b> Output file names</a></li>
+<li class="chapter" data-level="4.2" data-path="output-files.html"><a href="output-files.html#data-format-in-ascii-.csv-file"><i class="fa fa-check"></i><b>4.2</b> Data format in ASCII (.csv) file</a></li>
+<li class="chapter" data-level="4.3" data-path="output-files.html"><a href="output-files.html#data-format-in-binary-.dat-file"><i class="fa fa-check"></i><b>4.3</b> Data format in binary (.dat) file</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
+<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#best-practice-suggestions"><i class="fa fa-check"></i><b>5.1</b> Best practice suggestions</a></li>
+<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-1-vauclin-experiment"><i class="fa fa-check"></i><b>5.2</b> Example 1: Vauclin Experiment</a></li>
+<li class="chapter" data-level="5.3" data-path="applications.html"><a href="applications.html#example-2-shall-hill-czo"><i class="fa fa-check"></i><b>5.3</b> Example 2: Shall Hill CZO</a></li>
+<li class="chapter" data-level="5.4" data-path="applications.html"><a href="applications.html#example-3-conestoga-watershed-pennsylvanis"><i class="fa fa-check"></i><b>5.4</b> Example 3: Conestoga Watershed, Pennsylvanis</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>6</b> Calibration</a></li>
+<li class="chapter" data-level="7" data-path="quick-reproducible-and-automatic-hydrological-modeling.html"><a href="quick-reproducible-and-automatic-hydrological-modeling.html"><i class="fa fa-check"></i><b>7</b> Quick, Reproducible and Automatic hydrological modeling</a></li>
+<li class="chapter" data-level="8" data-path="course-code-and-program-design.html"><a href="course-code-and-program-design.html"><i class="fa fa-check"></i><b>8</b> Course code and program design</a></li>
+<li class="divider"></li>
+<li><a href="mailto:<Lele Shu>lele.shu@gmail.com" target="blank">Contact us</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Solver for Hydrologic Unstructured Domain (SHUD)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="output-files" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Output files</h1>
+<div id="output-file-names" class="section level2">
+<h2><span class="header-section-number">4.1</span> Output file names</h2>
+<p>Format of output file names:</p>
+<p><strong>[Project Name].[Identifier].[Format]</strong></p>
+<p>-The <em>[Project Name]</em> is user defined name of the project, so every input and output files must start with the <em>[Project Name]</em>. -The <em>[Format]</em> is one of <em>csv</em> or <em>dat</em>. <em>csv</em> is spreadsheet format and <em>dat</em> is bindary format.</p>
+<p>The <em>[Identifier]</em> is a combination of variables features, that in format of: <strong>[Model Unit][Variable Type][Variable Name]</strong>. <em>[Model Unit]</em> is one of three options of <em>ele</em> (elemtns), <em>riv</em> (river) or <em>lak</em> (lake). Variable type includes <em>y</em>, <em>v</em> and <em>q</em> that are state variable (in <span class="math inline">\(L\)</span>), specific flux (in <span class="math inline">\(L^3/L^2/T\)</span>) and flux (in <span class="math inline">\(L^3/T\)</span>) respectively.</p>
+<p>The list of output files is in following table.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Identifier</th>
+<th align="center">Mod unit</th>
+<th align="center">Type</th>
+<th align="center">Var Name</th>
+<th align="center">Meaning</th>
+<th align="center">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><em>.eleyic.</em></td>
+<td align="center">ele</td>
+<td align="center">y</td>
+<td align="center">ic</td>
+<td align="center">Storage of Interception</td>
+<td align="center"><span class="math inline">\(m\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center"><em>.eleysnow.</em></td>
+<td align="center">ele</td>
+<td align="center">y</td>
+<td align="center">snow</td>
+<td align="center">Storage of snow equivalence</td>
+<td align="center"><span class="math inline">\(m\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"><em>.eleysurf.</em></td>
+<td align="center">ele</td>
+<td align="center">y</td>
+<td align="center">surf</td>
+<td align="center">Storage of surface</td>
+<td align="center"><span class="math inline">\(m\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center"><em>.eleyunsat.</em></td>
+<td align="center">ele</td>
+<td align="center">y</td>
+<td align="center">unsat</td>
+<td align="center">Storage of vados zone</td>
+<td align="center"><span class="math inline">\(m\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"><em>.eleygw.</em></td>
+<td align="center">ele</td>
+<td align="center">y</td>
+<td align="center">gw</td>
+<td align="center">Groundwater head</td>
+<td align="center"><span class="math inline">\(m\)</span></td>
+<td align="center">.GW</td>
+</tr>
+<tr class="even">
+<td align="center"><em>.elevetp.</em></td>
+<td align="center">ele</td>
+<td align="center">v</td>
+<td align="center">etp</td>
+<td align="center">Potential ET</td>
+<td align="center"><span class="math inline">\(\frac{m^3}{m^2 d}\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"><em>.eleveta.</em></td>
+<td align="center">ele</td>
+<td align="center">v</td>
+<td align="center">eta</td>
+<td align="center">Actual ET</td>
+<td align="center"><span class="math inline">\(\frac{m^3}{m^2 d}\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center"><em>.elevetic.</em></td>
+<td align="center">ele</td>
+<td align="center">v</td>
+<td align="center">etic</td>
+<td align="center">Evap of interception</td>
+<td align="center"><span class="math inline">\(\frac{m^3}{m^2 d}\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"><em>.elevettr.</em></td>
+<td align="center">ele</td>
+<td align="center">v</td>
+<td align="center">ettr</td>
+<td align="center">Transpiration</td>
+<td align="center"><span class="math inline">\(\frac{m^3}{m^2 d}\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center"><em>.elevetev.</em></td>
+<td align="center">ele</td>
+<td align="center">v</td>
+<td align="center">etev</td>
+<td align="center">Soil Evaporation</td>
+<td align="center"><span class="math inline">\(\frac{m^3}{m^2 d}\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"><em>.elevprcp.</em></td>
+<td align="center">ele</td>
+<td align="center">v</td>
+<td align="center">prcp</td>
+<td align="center">Precipitation</td>
+<td align="center"><span class="math inline">\(\frac{m^3}{m^2 d}\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center"><em>.elevnetprcp.</em></td>
+<td align="center">ele</td>
+<td align="center">v</td>
+<td align="center">netprcp</td>
+<td align="center">Net Precipitation</td>
+<td align="center"><span class="math inline">\(\frac{m^3}{m^2 d}\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"><em>.elevinfil.</em></td>
+<td align="center">ele</td>
+<td align="center">v</td>
+<td align="center">infil</td>
+<td align="center">Infiltration Rate</td>
+<td align="center"><span class="math inline">\(\frac{m^3}{m^2 d}\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center"><em>.elevexfil.</em></td>
+<td align="center">ele</td>
+<td align="center">v</td>
+<td align="center">infil</td>
+<td align="center">Exfiltration Rate</td>
+<td align="center"><span class="math inline">\(\frac{m^3}{m^2 d}\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"><em>.elevrech.</em></td>
+<td align="center">ele</td>
+<td align="center">v</td>
+<td align="center">rech</td>
+<td align="center">Recharge Rate</td>
+<td align="center"><span class="math inline">\(\frac{m^3}{m^2 d}\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center"><em>.eleqsurf.</em></td>
+<td align="center">ele</td>
+<td align="center">q</td>
+<td align="center">surf</td>
+<td align="center">Overland flow</td>
+<td align="center"><span class="math inline">\(m^3/d\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"><em>.eleqsub.</em></td>
+<td align="center">ele</td>
+<td align="center">q</td>
+<td align="center">sub</td>
+<td align="center">Subsurface flow</td>
+<td align="center"><span class="math inline">\(m^3/d\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center"><em>.rivystage.</em></td>
+<td align="center">riv</td>
+<td align="center">y</td>
+<td align="center">stage</td>
+<td align="center">River Stage</td>
+<td align="center"><span class="math inline">\(m\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"><em>.rivqup.</em></td>
+<td align="center">riv</td>
+<td align="center">q</td>
+<td align="center">up</td>
+<td align="center">Flux to upstream</td>
+<td align="center"><span class="math inline">\(m^3/d\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center"><em>.rivqdown.</em></td>
+<td align="center">riv</td>
+<td align="center">q</td>
+<td align="center">down</td>
+<td align="center">Flux to downstream</td>
+<td align="center"><span class="math inline">\(m^3/d\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"><em>.rivqsurf.</em></td>
+<td align="center">riv</td>
+<td align="center">q</td>
+<td align="center">surf</td>
+<td align="center">Flux to landsurface</td>
+<td align="center"><span class="math inline">\(m^3/d\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center"><em>.rivqsub.</em></td>
+<td align="center">riv</td>
+<td align="center">q</td>
+<td align="center">sub</td>
+<td align="center">Flux to subsurface</td>
+<td align="center"><span class="math inline">\(m^3/d\)</span></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="data-format-in-ascii-.csv-file" class="section level2">
+<h2><span class="header-section-number">4.2</span> Data format in ASCII (.csv) file</h2>
+<p>N - Number of column of output data, excluding the time column. m - Number of time-step. StartTime - String of date/time (YYYYMMDD or YYYYMMDD.hhmmss)</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">N</th>
+<th align="center">StartTime</th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(T_1\)</span></td>
+<td align="center"><span class="math inline">\(v_{1 \cdot 1}\)</span></td>
+<td align="center"><span class="math inline">\(v_{1 \cdot 2}\)</span></td>
+<td align="center">…</td>
+<td align="center"><span class="math inline">\(v_{1 \cdot N}\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(T_2\)</span></td>
+<td align="center"><span class="math inline">\(v_{2 \cdot 1}\)</span></td>
+<td align="center"><span class="math inline">\(v_{2 \cdot 2}\)</span></td>
+<td align="center">…</td>
+<td align="center"><span class="math inline">\(v_{2 \cdot N}\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(T_3\)</span></td>
+<td align="center"><span class="math inline">\(v_{3 \cdot 1}\)</span></td>
+<td align="center"><span class="math inline">\(v_{3 \cdot 2}\)</span></td>
+<td align="center">…</td>
+<td align="center"><span class="math inline">\(v_{3 \cdot N}\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(T_{m}\)</span></td>
+<td align="center"><span class="math inline">\(v_{m \cdot 1}\)</span></td>
+<td align="center"><span class="math inline">\(v_{m \cdot 2}\)</span></td>
+<td align="center">…</td>
+<td align="center"><span class="math inline">\(v_{m \cdot N}\)</span></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="data-format-in-binary-.dat-file" class="section level2">
+<h2><span class="header-section-number">4.3</span> Data format in binary (.dat) file</h2>
+<p>The value saved in binary file are identical from ASCII format, but different data structure.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">ID</th>
+<th align="center"><span class="math inline">\(i\)</span></th>
+<th align="center">Value</th>
+<th align="center">Format</th>
+<th align="center">Length</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">-</td>
+<td align="center"><span class="math inline">\(N\)</span></td>
+<td align="center">double</td>
+<td align="center">8</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">-</td>
+<td align="center">StartTime</td>
+<td align="center">double</td>
+<td align="center">8</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center"><span class="math inline">\(T_1\)</span></td>
+<td align="center">double</td>
+<td align="center">8</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center"><span class="math inline">\(v_{1 \cdot 1}\)</span></td>
+<td align="center">double</td>
+<td align="center">8</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center"><span class="math inline">\(v_{1 \cdot 2}\)</span></td>
+<td align="center">double</td>
+<td align="center">8</td>
+</tr>
+<tr class="even">
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">double</td>
+<td align="center">8</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\((N+1) * (T-1) + i +3\)</span></td>
+<td align="center">N</td>
+<td align="center"><span class="math inline">\(v_{1 \cdot N}\)</span></td>
+<td align="center">double</td>
+<td align="center">8</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\((N+1) * (T-1) + i +3\)</span></td>
+<td align="center">0</td>
+<td align="center"><span class="math inline">\(T_2\)</span></td>
+<td align="center">double</td>
+<td align="center">8</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\((N+1) * (T-1) + i +3\)</span></td>
+<td align="center">1</td>
+<td align="center"><span class="math inline">\(v_{2 \cdot 1}\)</span></td>
+<td align="center">double</td>
+<td align="center">8</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\((N+1) * (T-1) + i +3\)</span></td>
+<td align="center">2</td>
+<td align="center"><span class="math inline">\(v_{2 \cdot 2}\)</span></td>
+<td align="center">double</td>
+<td align="center">8</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\((N+1) * (T-1) + i +3\)</span></td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">double</td>
+<td align="center">8</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\((N+1) * (T-1) + i +3\)</span></td>
+<td align="center">N</td>
+<td align="center"><span class="math inline">\(v_{2 \cdot N}\)</span></td>
+<td align="center">double</td>
+<td align="center">8</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\((N+1) * (T-1) + i +3\)</span></td>
+<td align="center">0</td>
+<td align="center"><span class="math inline">\(T_3\)</span></td>
+<td align="center">double</td>
+<td align="center">8</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\((N+1) * (T-1) + i +3\)</span></td>
+<td align="center">1</td>
+<td align="center"><span class="math inline">\(v_{3 \cdot 1}\)</span></td>
+<td align="center">double</td>
+<td align="center">8</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\((N+1) * (T-1) + i +3\)</span></td>
+<td align="center">2</td>
+<td align="center"><span class="math inline">\(v_{3 \cdot 2}\)</span></td>
+<td align="center">double</td>
+<td align="center">8</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\((N+1) * (T-1) + i +3\)</span></td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">double</td>
+<td align="center">8</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\((N+1) * (T-1) + i +3\)</span></td>
+<td align="center">N</td>
+<td align="center"><span class="math inline">\(v_{3 \cdot N}\)</span></td>
+<td align="center">double</td>
+<td align="center">8</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\((N+1) * (T-1) + i +3\)</span></td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">double</td>
+<td align="center">8</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\((N+1) * (T-1) + i +3\)</span></td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">double</td>
+<td align="center">8</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\((N+1) * (T-1) + i +3\)</span></td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">double</td>
+<td align="center">8</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\((N+1) * (T-1) + i +3\)</span></td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">double</td>
+<td align="center">8</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\((N+1) * (m-1) + i +3\)</span></td>
+<td align="center">0</td>
+<td align="center"><span class="math inline">\(T_{m}\)</span></td>
+<td align="center">double</td>
+<td align="center">8</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\((N+1) * (m-1) + i +3\)</span></td>
+<td align="center">1</td>
+<td align="center"><span class="math inline">\(v_{m \cdot 1}\)</span></td>
+<td align="center">double</td>
+<td align="center">8</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\((N+1) * (m-1) + i +3\)</span></td>
+<td align="center">2</td>
+<td align="center"><span class="math inline">\(v_{m \cdot 2}\)</span></td>
+<td align="center">double</td>
+<td align="center">8</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\((N+1) * (m-1) + i +3\)</span></td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">double</td>
+<td align="center">8</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\((N+1) * (m-1) + i +3\)</span></td>
+<td align="center">N</td>
+<td align="center"><span class="math inline">\(v_{m \cdot N}\)</span></td>
+<td align="center">double</td>
+<td align="center">8</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="input-files.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="applications.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["SHUD_User_Guide.pdf", "SHUD_User_Guide.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

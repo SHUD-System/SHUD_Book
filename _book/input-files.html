@@ -1,0 +1,1803 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Input files | Solver for Hydrologic Unstructured Domain (SHUD)</title>
+  <meta name="description" content="SHUD User Guide" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Input files | Solver for Hydrologic Unstructured Domain (SHUD)" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="SHUD User Guide" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Input files | Solver for Hydrologic Unstructured Domain (SHUD)" />
+  
+  <meta name="twitter:description" content="SHUD User Guide" />
+  
+
+<meta name="author" content="Lele Shu (lele.shu@gmail.com)" />
+
+
+<meta name="date" content="2019-11-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="install-shud-and-shud-tools.html"/>
+<link rel="next" href="output-files.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SHUD User Guide</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#standing-on-the-shoulder-of-giant"><i class="fa fa-check"></i><b>1.1</b> Standing on the shoulder of giant</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#brief-history-of-pihm-system"><i class="fa fa-check"></i><b>1.2</b> Brief History of PIHM system</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#steps-of-modeling-with-shud"><i class="fa fa-check"></i><b>1.3</b> Steps of modeling with SHUD</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#essential-terrestrial-variables"><i class="fa fa-check"></i><b>1.3.1</b> Essential Terrestrial Variables?</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#a-priori-data-sources"><i class="fa fa-check"></i><b>1.3.2</b> A-Priori Data Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#workflow-of-shud-modeling-system"><i class="fa fa-check"></i><b>1.4</b> Workflow of SHUD Modeling System</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="install-shud-and-shud-tools.html"><a href="install-shud-and-shud-tools.html"><i class="fa fa-check"></i><b>2</b> Install SHUD and SHUD-tools</a><ul>
+<li class="chapter" data-level="2.1" data-path="install-shud-and-shud-tools.html"><a href="install-shud-and-shud-tools.html#sundialscvode"><i class="fa fa-check"></i><b>2.1</b> SUNDIALS/CVODE</a></li>
+<li class="chapter" data-level="2.2" data-path="install-shud-and-shud-tools.html"><a href="install-shud-and-shud-tools.html#shud"><i class="fa fa-check"></i><b>2.2</b> SHUD</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="install-shud-and-shud-tools.html"><a href="install-shud-and-shud-tools.html#openmp"><i class="fa fa-check"></i><b>2.2.1</b> OpenMP</a></li>
+<li class="chapter" data-level="2.2.2" data-path="install-shud-and-shud-tools.html"><a href="install-shud-and-shud-tools.html#run-shud-executables."><i class="fa fa-check"></i><b>2.2.2</b> Run SHUD executables.</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="install-shud-and-shud-tools.html"><a href="install-shud-and-shud-tools.html#shud-tools"><i class="fa fa-check"></i><b>2.3</b> SHUD-tools</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="input-files.html"><a href="input-files.html"><i class="fa fa-check"></i><b>3</b> Input files</a><ul>
+<li class="chapter" data-level="3.1" data-path="input-files.html"><a href="input-files.html#spatial-data"><i class="fa fa-check"></i><b>3.1</b> Spatial data</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="input-files.html"><a href="input-files.html#sp.mesh-file"><i class="fa fa-check"></i><b>3.1.1</b> .sp.mesh file</a></li>
+<li class="chapter" data-level="3.1.2" data-path="input-files.html"><a href="input-files.html#sp.att-file"><i class="fa fa-check"></i><b>3.1.2</b> .sp.att file</a></li>
+<li class="chapter" data-level="3.1.3" data-path="input-files.html"><a href="input-files.html#sp.riv-file"><i class="fa fa-check"></i><b>3.1.3</b> .sp.riv file</a></li>
+<li class="chapter" data-level="3.1.4" data-path="input-files.html"><a href="input-files.html#sp.rivseg-file"><i class="fa fa-check"></i><b>3.1.4</b> .sp.rivseg file</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="input-files.html"><a href="input-files.html#model-configuration-files"><i class="fa fa-check"></i><b>3.2</b> Model configuration files</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="input-files.html"><a href="input-files.html#cfg.para-file"><i class="fa fa-check"></i><b>3.2.1</b> .cfg.para file</a></li>
+<li class="chapter" data-level="3.2.2" data-path="input-files.html"><a href="input-files.html#cfg.calib-file"><i class="fa fa-check"></i><b>3.2.2</b> .cfg.calib file</a></li>
+<li class="chapter" data-level="3.2.3" data-path="input-files.html"><a href="input-files.html#cfg.ic-file"><i class="fa fa-check"></i><b>3.2.3</b> .cfg.ic file</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="input-files.html"><a href="input-files.html#time-series-data"><i class="fa fa-check"></i><b>3.3</b> Time-series data</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="input-files.html"><a href="input-files.html#tsd.forc-file"><i class="fa fa-check"></i><b>3.3.1</b> .tsd.forc file</a></li>
+<li class="chapter" data-level="3.3.2" data-path="input-files.html"><a href="input-files.html#tsd.lai-file"><i class="fa fa-check"></i><b>3.3.2</b> .tsd.lai file</a></li>
+<li class="chapter" data-level="3.3.3" data-path="input-files.html"><a href="input-files.html#tsd.rl-file"><i class="fa fa-check"></i><b>3.3.3</b> .tsd.rl file</a></li>
+<li class="chapter" data-level="3.3.4" data-path="input-files.html"><a href="input-files.html#tsd.mf-file"><i class="fa fa-check"></i><b>3.3.4</b> .tsd.mf file</a></li>
+<li class="chapter" data-level="3.3.5" data-path="input-files.html"><a href="input-files.html#tsd.obs-file"><i class="fa fa-check"></i><b>3.3.5</b> .tsd.obs file</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="output-files.html"><a href="output-files.html"><i class="fa fa-check"></i><b>4</b> Output files</a><ul>
+<li class="chapter" data-level="4.1" data-path="output-files.html"><a href="output-files.html#output-file-names"><i class="fa fa-check"></i><b>4.1</b> Output file names</a></li>
+<li class="chapter" data-level="4.2" data-path="output-files.html"><a href="output-files.html#data-format-in-ascii-.csv-file"><i class="fa fa-check"></i><b>4.2</b> Data format in ASCII (.csv) file</a></li>
+<li class="chapter" data-level="4.3" data-path="output-files.html"><a href="output-files.html#data-format-in-binary-.dat-file"><i class="fa fa-check"></i><b>4.3</b> Data format in binary (.dat) file</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
+<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#best-practice-suggestions"><i class="fa fa-check"></i><b>5.1</b> Best practice suggestions</a></li>
+<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-1-vauclin-experiment"><i class="fa fa-check"></i><b>5.2</b> Example 1: Vauclin Experiment</a></li>
+<li class="chapter" data-level="5.3" data-path="applications.html"><a href="applications.html#example-2-shall-hill-czo"><i class="fa fa-check"></i><b>5.3</b> Example 2: Shall Hill CZO</a></li>
+<li class="chapter" data-level="5.4" data-path="applications.html"><a href="applications.html#example-3-conestoga-watershed-pennsylvanis"><i class="fa fa-check"></i><b>5.4</b> Example 3: Conestoga Watershed, Pennsylvanis</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>6</b> Calibration</a></li>
+<li class="chapter" data-level="7" data-path="quick-reproducible-and-automatic-hydrological-modeling.html"><a href="quick-reproducible-and-automatic-hydrological-modeling.html"><i class="fa fa-check"></i><b>7</b> Quick, Reproducible and Automatic hydrological modeling</a></li>
+<li class="chapter" data-level="8" data-path="course-code-and-program-design.html"><a href="course-code-and-program-design.html"><i class="fa fa-check"></i><b>8</b> Course code and program design</a></li>
+<li class="divider"></li>
+<li><a href="mailto:<Lele Shu>lele.shu@gmail.com" target="blank">Contact us</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Solver for Hydrologic Unstructured Domain (SHUD)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="input-files" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Input files</h1>
+<p>List of input files:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">File</th>
+<th align="center">Category</th>
+<th align="center">Comments</th>
+<th align="center">Header</th>
+<th align="center"># of column</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">.mesh</td>
+<td align="center">sp</td>
+<td align="center">Domain <strong>element</strong> (triangular mesh)</td>
+<td align="center">Yes</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">.att</td>
+<td align="center">sp</td>
+<td align="center">Attribute table of triangular <strong>elements</strong></td>
+<td align="center">Yes</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">.riv</td>
+<td align="center">sp</td>
+<td align="center"><strong>Rivers</strong></td>
+<td align="center">Yes</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">.rivchn</td>
+<td align="center">sp</td>
+<td align="center">Topologic relation b/w <strong>River</strong> and <strong>Element</strong></td>
+<td align="center">Yes</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">.calib</td>
+<td align="center">cfg</td>
+<td align="center">Calibration on physical parameters</td>
+<td align="center">Yes</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">.para</td>
+<td align="center">cfg</td>
+<td align="center">Parameters of the model configurature</td>
+<td align="center">Yes</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">.ic</td>
+<td align="center">cfg</td>
+<td align="center">Intial conditions</td>
+<td align="center">Yes</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">.geol</td>
+<td align="center">para</td>
+<td align="center">Physical parameters for <strong>Geology</strong> layers</td>
+<td align="center">Yes</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">.soil</td>
+<td align="center">para</td>
+<td align="center">Physical parameters for <strong>Soil</strong> layers</td>
+<td align="center">Yes</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">.lc</td>
+<td align="center">para</td>
+<td align="center">Physical parameters for <strong>Land cover</strong> layers</td>
+<td align="center">Yes</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">.forc</td>
+<td align="center">tsd</td>
+<td align="center">List of files to the Time-series forcing data</td>
+<td align="center">Yes</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">.csv</td>
+<td align="center">tsd</td>
+<td align="center">Time-series <strong>forcing</strong> data</td>
+<td align="center">Yes</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">.lai</td>
+<td align="center">tsd</td>
+<td align="center">Time-series <strong>LAI</strong> data</td>
+<td align="center">Yes</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">.obs</td>
+<td align="center">tsd</td>
+<td align="center">Time-series observational data for calibration purpose only</td>
+<td align="center">Yes</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">.mf</td>
+<td align="center">tsd</td>
+<td align="center">Time-series <strong>Melt Factor</strong> data</td>
+<td align="center">Yes</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">.rl</td>
+<td align="center">tsd</td>
+<td align="center">Time-series <strong>Roughness Length</strong> data</td>
+<td align="center">Yes</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">gis/domain</td>
+<td align="center">Shapefile</td>
+<td align="center">Shapefile of .mesh file</td>
+<td align="center">x</td>
+<td align="center">x</td>
+</tr>
+<tr class="even">
+<td align="center">gis/river</td>
+<td align="center">Shapefile</td>
+<td align="center">Shapefile of .riv file</td>
+<td align="center">x</td>
+<td align="center">x</td>
+</tr>
+<tr class="odd">
+<td align="center">gis/seg</td>
+<td align="center">Shapefile</td>
+<td align="center">Shapefile of .rivchn file</td>
+<td align="center">x</td>
+<td align="center">x</td>
+</tr>
+</tbody>
+</table>
+<div class="figure">
+<img src="Fig/IO/Inputfiles.png" alt="The screenshot of input files for SHUD" />
+<p class="caption">The screenshot of input files for SHUD</p>
+</div>
+<p>The files in folder <em>gis</em> and <em>fig</em> are not involved in SHUD modeling, but they are very useful for your data pre- and post-processing.</p>
+<div id="spatial-data" class="section level2">
+<h2><span class="header-section-number">3.1</span> Spatial data</h2>
+<div id="sp.mesh-file" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> .sp.mesh file</h3>
+<p><img src="Fig/IO/sp.mesh1.png" alt="Example of .sp.mesh file (block 1)" /> <img src="Fig/IO/sp.mesh2.png" alt="Example of .sp.mesh file (block 2)" /> There are two tables in the .mesh file, the one is a table of elements and the other is a table of nodes of elements.</p>
+<ul>
+<li><p><strong>Block 1 (Element information)</strong></p></li>
+<li><p>Pre-table</p></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Value1</th>
+<th align="center">Value2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Number of rows ( <span class="math inline">\(N_{element}\)</span>)</td>
+<td align="center">Number of columns (<span class="math inline">\(8\)</span>)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Table</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Colname</th>
+<th align="center">Meaning</th>
+<th align="center">Range</th>
+<th align="center">Unit</th>
+<th align="center">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">ID</td>
+<td align="center">Index of element <span class="math inline">\(i\)</span></td>
+<td align="center">1 ~ <span class="math inline">\(N_{element}\)</span></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">Node1</td>
+<td align="center">Node 1 of element <span class="math inline">\(i\)</span></td>
+<td align="center">1 ~ <span class="math inline">\(N_{node}\)</span></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">Node2</td>
+<td align="center">Node 2 of element <span class="math inline">\(i\)</span></td>
+<td align="center">1 ~ <span class="math inline">\(N_{node}\)</span></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">Node3</td>
+<td align="center">Node 3 of element <span class="math inline">\(i\)</span></td>
+<td align="center">1 ~ <span class="math inline">\(N_{node}\)</span></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">Nabr1</td>
+<td align="center">Index of Neighbor 1 of element <span class="math inline">\(i\)</span></td>
+<td align="center">1 ~ <span class="math inline">\(N_{element}\)</span></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">Nabr2</td>
+<td align="center">Index of Neighbor 2 of element <span class="math inline">\(i\)</span></td>
+<td align="center">1 ~ <span class="math inline">\(N_{element}\)</span></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">Nabr3</td>
+<td align="center">Index of Neighbor 3 of element <span class="math inline">\(i\)</span></td>
+<td align="center">1 ~ <span class="math inline">\(N_{element}\)</span></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">Zmax</td>
+<td align="center">Surface elevation of element <span class="math inline">\(i\)</span></td>
+<td align="center">-9999 ~ +inf</td>
+<td align="center"><span class="math inline">\(m\)</span></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p><strong>Block 2 (node information)</strong></p></li>
+<li><p>Pre-table:</p></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Value1</th>
+<th align="center">Value2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Number of rows ( <span class="math inline">\(N_{node}\)</span>)</td>
+<td align="center">Number of columns (<span class="math inline">\(5\)</span>)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Table</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Colname</th>
+<th align="center">Meaning</th>
+<th align="center">Range</th>
+<th align="center">Unit</th>
+<th align="center">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">ID</td>
+<td align="center">Index of node <span class="math inline">\(i\)</span></td>
+<td align="center">1 ~ <span class="math inline">\(N_{element}\)</span></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">X</td>
+<td align="center">X coordinate of node <span class="math inline">\(i\)</span></td>
+<td align="center">1 ~ <span class="math inline">\(N_{node}\)</span></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">Y</td>
+<td align="center">Y coordinate of node <span class="math inline">\(i\)</span></td>
+<td align="center">1 ~ <span class="math inline">\(N_{node}\)</span></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">AqDepth</td>
+<td align="center">Thickness of aquifer <span class="math inline">\(i\)</span></td>
+<td align="center">0 ~ +inf</td>
+<td align="center"><span class="math inline">\(m\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">Elevation</td>
+<td align="center">Surface elevation of node <span class="math inline">\(i\)</span></td>
+<td align="center">-9999 ~ +inf</td>
+<td align="center"><span class="math inline">\(m\)</span></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="sp.att-file" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> .sp.att file</h3>
+<div class="figure">
+<img src="Fig/IO/sp.att.png" alt="Example of .sp.att file" />
+<p class="caption">Example of .sp.att file</p>
+</div>
+<ul>
+<li>Pre-table</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Value1</th>
+<th align="center">Value2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Number of rows ( <span class="math inline">\(N_{element}\)</span>)</td>
+<td align="center">Number of columns (<span class="math inline">\(7\)</span>)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Table</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Colname</th>
+<th align="center">Meaning</th>
+<th align="center">Range</th>
+<th align="center">Unit</th>
+<th align="center">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">ID</td>
+<td align="center">Index of element <span class="math inline">\(i\)</span></td>
+<td align="center">1 ~ <span class="math inline">\(N_{element}\)</span></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SOIL</td>
+<td align="center">Index of soil type</td>
+<td align="center">1 ~ <span class="math inline">\(N_{soil}\)</span></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">GEOL</td>
+<td align="center">Index of geology type</td>
+<td align="center">1 ~ <span class="math inline">\(N_{geol}\)</span></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">LC</td>
+<td align="center">Index of land cover type</td>
+<td align="center">1 ~ <span class="math inline">\(N_{lc}\)</span></td>
+<td align="center">-</td>
+<td align="center"><span class="math inline">\(N_{lc}\)</span> = <span class="math inline">\(N_{lai}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">FORC</td>
+<td align="center">Index of forcing site</td>
+<td align="center">1 ~ <span class="math inline">\(N_{forc}\)</span></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">MF</td>
+<td align="center">Index of melt factor</td>
+<td align="center">1 ~ <span class="math inline">\(N_{mf}\)</span></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">BC</td>
+<td align="center">Index of boundary condition</td>
+<td align="center">1 ~ <span class="math inline">\(N_{bc}\)</span></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="sp.riv-file" class="section level3">
+<h3><span class="header-section-number">3.1.3</span> .sp.riv file</h3>
+<div class="figure">
+<img src="Fig/IO/sp.riv.png" alt="Example of .sp.riv file" />
+<p class="caption">Example of .sp.riv file</p>
+</div>
+<ul>
+<li>Pre-table</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Value1</th>
+<th align="center">Value2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Number of rows ( <span class="math inline">\(N_{riv}\)</span>)</td>
+<td align="center">Number of columns (<span class="math inline">\(5\)</span>)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Table</li>
+</ul>
+<table>
+<colgroup>
+<col width="12%" />
+<col width="29%" />
+<col width="12%" />
+<col width="12%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Colname</th>
+<th align="center">Meaning</th>
+<th align="center">Range</th>
+<th align="center">Unit</th>
+<th align="center">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">ID</td>
+<td align="center">Index of river <span class="math inline">\(i\)</span></td>
+<td align="center">1 ~ <span class="math inline">\(N_{river}\)</span></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">DOWN</td>
+<td align="center">Index of downstream river</td>
+<td align="center">1 ~ <span class="math inline">\(N_{river}\)</span></td>
+<td align="center">-</td>
+<td align="center">Negative vlaue indicates outlet</td>
+</tr>
+<tr class="odd">
+<td align="center">Type</td>
+<td align="center">Index of river parameters</td>
+<td align="center">1 ~ <span class="math inline">\(N_{rivertype}\)</span></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">Slope</td>
+<td align="center">Slope of river bed</td>
+<td align="center">-10 ~ 10</td>
+<td align="center"><span class="math inline">\(m/m\)</span></td>
+<td align="center">Height/Length</td>
+</tr>
+<tr class="odd">
+<td align="center">Length</td>
+<td align="center">Length of the river <span class="math inline">\(i\)</span></td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(m\)</span></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="sp.rivseg-file" class="section level3">
+<h3><span class="header-section-number">3.1.4</span> .sp.rivseg file</h3>
+<div class="figure">
+<img src="Fig/IO/sp.rivchn.png" alt="Example of .sp.rivseg file" />
+<p class="caption">Example of .sp.rivseg file</p>
+</div>
+<ul>
+<li>Pre-table</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Value1</th>
+<th align="center">Value2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Number of rows ( <span class="math inline">\(N_{segment}\)</span>)</td>
+<td align="center">Number of columns (<span class="math inline">\(4\)</span>)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Table</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Colname</th>
+<th align="center">Meaning</th>
+<th align="center">Range</th>
+<th align="center">Unit</th>
+<th align="center">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">ID</td>
+<td align="center">Index of segments <span class="math inline">\(i\)</span></td>
+<td align="center">1 ~ <span class="math inline">\(N_{segment}\)</span></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">iRiv</td>
+<td align="center">Index of river</td>
+<td align="center">1 ~ <span class="math inline">\(N_{river}\)</span></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">iEle</td>
+<td align="center">Index of element</td>
+<td align="center">1 ~ <span class="math inline">\(N_{element}\)</span></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">Length</td>
+<td align="center">Length of the segments <span class="math inline">\(i\)</span></td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(m\)</span></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="model-configuration-files" class="section level2">
+<h2><span class="header-section-number">3.2</span> Model configuration files</h2>
+<div id="cfg.para-file" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> .cfg.para file</h3>
+<div class="figure">
+<img src="Fig/IO/cfg.para.png" alt="Example of .cfg.para file" />
+<p class="caption">Example of .cfg.para file</p>
+</div>
+<ul>
+<li>Table</li>
+</ul>
+<table style="width:100%;">
+<colgroup>
+<col width="20%" />
+<col width="26%" />
+<col width="11%" />
+<col width="11%" />
+<col width="30%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Colname</th>
+<th align="center">Meaning</th>
+<th align="center">Range</th>
+<th align="center">Unit</th>
+<th align="center">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">VERBOSE</td>
+<td align="center">Verbose mode</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">DEBUG</td>
+<td align="center">Debug mode</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">INIT_MODE</td>
+<td align="center">Initial condition mode</td>
+<td align="center">1,2,3</td>
+<td align="center">-</td>
+<td align="center">1=Dry condition, 2=Relief conditon, 3=Warm start</td>
+</tr>
+<tr class="even">
+<td align="center">ASCII_OUTPUT</td>
+<td align="center">ASCII ouput</td>
+<td align="center">1/0</td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">Binary_OUTPUT</td>
+<td align="center">Binary output</td>
+<td align="center">1/0</td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">NUM_OPENMP</td>
+<td align="center">Number of threads for OpenMP</td>
+<td align="center">0 ~ <span class="math inline">\(N_{threads}\)</span></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">ABSTOL</td>
+<td align="center">Abosolute tolerance for CVODE solver</td>
+<td align="center">1e-6 ~ 0.1</td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">RELTOL</td>
+<td align="center">Relative tolerance for CVODE solver</td>
+<td align="center">1e-6 ~ 0.1</td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">INIT_SOLVER_STEP</td>
+<td align="center">Initial time step for CVODE solver</td>
+<td align="center">?</td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">MAX_SOLVER_STEP</td>
+<td align="center">Maximum time step for CVODE solver</td>
+<td align="center">?</td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">ET_STEP</td>
+<td align="center">Time step of Evapotranspiration</td>
+<td align="center">1~360</td>
+<td align="center"><span class="math inline">\(min\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">START</td>
+<td align="center">Start Time</td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(day\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">END</td>
+<td align="center">End Time</td>
+<td align="center">-</td>
+<td align="center"><span class="math inline">\(day\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">dt_ye_snow</td>
+<td align="center">Time step of output snow storage</td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(min\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">dt_ye_surf</td>
+<td align="center">Time step of output surface storage</td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(min\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">dt_ye_unsat</td>
+<td align="center">Time step of output unsaturated storage</td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(min\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">dt_ye_gw</td>
+<td align="center">Time step of output groundwater head</td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(min\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">dt_Qe_surf</td>
+<td align="center">Time step of output surface element flux</td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(min\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">dt_Qe_sub</td>
+<td align="center">Time step of output subsurface element flux</td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(min\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">dt_qe_et0</td>
+<td align="center">Time step of output element flux, interception</td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(min\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">dt_qe_et1</td>
+<td align="center">Time step of output element flux, transpiration</td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(min\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">dt_qe_et2</td>
+<td align="center">Time step of output element flux, evaporation</td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(min\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">dt_qe_etp</td>
+<td align="center">Time step of output element flux, potential ET</td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(min\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">dt_qe_prcp</td>
+<td align="center">Time step of output element flux, interception</td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(min\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">dt_qe_infil</td>
+<td align="center">Time step of output element flux, interception</td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(min\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">dt_qe_rech</td>
+<td align="center">Time step of output element flux, interception</td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(min\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">dt_yr_stage</td>
+<td align="center">Time step of output river stage</td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(min\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">dt_Qr_down</td>
+<td align="center">Time step of output river flux, downstream</td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(min\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">dt_Qr_surf</td>
+<td align="center">Time step of output river flux, surface flow</td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(min\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">dt_Qr_sub</td>
+<td align="center">Time step of output river flux, base flow</td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(min\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">dt_Qr_up</td>
+<td align="center">Time step of output river flux, upstream</td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(min\)</span></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="cfg.calib-file" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> .cfg.calib file</h3>
+<div class="figure">
+<img src="Fig/IO/cfg.calib.png" alt="Example of .cfg.calib file" />
+<p class="caption">Example of .cfg.calib file</p>
+</div>
+<ul>
+<li>Table</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Colname</th>
+<th align="center">Meaning</th>
+<th align="center">Range</th>
+<th align="center">Unit</th>
+<th align="center">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">GEOL_KSATH</td>
+<td align="center">Horizontal conductivity of ground water</td>
+<td align="center">?</td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">GEOL_KSATV</td>
+<td align="center">Vertical conductivity of ground water</td>
+<td align="center">?</td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">GEOL_KMACSATH</td>
+<td align="center">Horizontal conductivity of macropore</td>
+<td align="center">?</td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">GEOL_DMAC</td>
+<td align="center">Macropore depth</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">GEOL_THETAS</td>
+<td align="center">Porosity, saturated soil moisture</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">GEOL_THETAR</td>
+<td align="center">Residual soil moisture</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">GEOL_MACVF</td>
+<td align="center">Vertical macropore areal fraction</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SOIL_KINF</td>
+<td align="center">Vertical conductivity of top soil</td>
+<td align="center">?</td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SOIL_KMACSATV</td>
+<td align="center">Vertical conductivity of soil macropore</td>
+<td align="center">?</td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SOIL_DINF</td>
+<td align="center">Infiltration depth</td>
+<td align="center">?</td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SOIL_DROOT</td>
+<td align="center">Root depth</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SOIL_ALPHA</td>
+<td align="center"><span class="math inline">\(\alpha\)</span> value in van Genuchten equation</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SOIL_BETA</td>
+<td align="center"><span class="math inline">\(\beta\)</span> value in van Genuchten equation</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SOIL_MACHF</td>
+<td align="center">Horizontal macropore areal fraction</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">LC_VEGFRAC</td>
+<td align="center">Vegetation fraction</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">LC_ALBEDO</td>
+<td align="center">Emissitive reflection ratio</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">LC_ROUGH</td>
+<td align="center">Manning’s roughness of element surface</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">LC_SOILDGD</td>
+<td align="center">Soil degradation</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">LC_IMPAF</td>
+<td align="center">Impervious areal fraction</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">LC_ISMAX</td>
+<td align="center">Maximum interception</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">AQ_DEPTH+</td>
+<td align="center">Thichness of aquifer</td>
+<td align="center"></td>
+<td align="center"><span class="math inline">\(m\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">TS_PRCP</td>
+<td align="center">Precipitation</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">TS_SFCTMP+</td>
+<td align="center">Temperature</td>
+<td align="center"></td>
+<td align="center"><span class="math inline">\(C\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">ET_ETP</td>
+<td align="center">Transpiration</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">ET_IC</td>
+<td align="center">Interception</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">ET_TR</td>
+<td align="center">Evaporation</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">ET_SOIL</td>
+<td align="center">Evaporation</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">RIV_ROUGH</td>
+<td align="center">Manning’s roughness of river</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">RIV_KH</td>
+<td align="center">Conductivity of river bed</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">RIV_DPTH+</td>
+<td align="center">Depth of river cross section</td>
+<td align="center"></td>
+<td align="center"><span class="math inline">\(m\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">RIV_WDTH+</td>
+<td align="center">Width of river cross section</td>
+<td align="center"></td>
+<td align="center"><span class="math inline">\(m\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">RIV_SINU</td>
+<td align="center">Sinuosity of river path</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">RIV_CWR</td>
+<td align="center"><span class="math inline">\(C_{wr}\)</span> in Chezy equation</td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">RIV_BSLOPE+</td>
+<td align="center">Slope of river bed</td>
+<td align="center"></td>
+<td align="center"><span class="math inline">\(m/m\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">IC_GW+</td>
+<td align="center">Initial condition of groundwater</td>
+<td align="center"></td>
+<td align="center"><span class="math inline">\(m\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">IC_RIV+</td>
+<td align="center">Initial condition of river stage</td>
+<td align="center"></td>
+<td align="center"><span class="math inline">\(m\)</span></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="cfg.ic-file" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> .cfg.ic file</h3>
+<div class="figure">
+<img src="Fig/IO/cfg.ic.png" alt="Example of .cfg.ic file" />
+<p class="caption">Example of .cfg.ic file</p>
+</div>
+<ul>
+<li><p><strong>Block 1 (Element initial condition)</strong></p></li>
+<li><p>Pre-table</p></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Value1</th>
+<th align="center">Value2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Number of rows ( <span class="math inline">\(N_{element}\)</span>)</td>
+<td align="center">Number of columns (<span class="math inline">\(6\)</span>)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Table</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Colname</th>
+<th align="center">Meaning</th>
+<th align="center">Range</th>
+<th align="center">Unit</th>
+<th align="center">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">ID</td>
+<td align="center">Index of element <span class="math inline">\(i\)</span></td>
+<td align="center">1 ~ <span class="math inline">\(N_{element}\)</span></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">Canopy</td>
+<td align="center">Canopy storage of element <span class="math inline">\(i\)</span></td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(m\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">Snow</td>
+<td align="center">Snow storage of element <span class="math inline">\(i\)</span></td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(m\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">Surface</td>
+<td align="center">Surface storage of element <span class="math inline">\(i\)</span></td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(m\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">Unsat</td>
+<td align="center">Unsaturated storage of element <span class="math inline">\(i\)</span></td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(m\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">GW</td>
+<td align="center">Groundwater head of element <span class="math inline">\(i\)</span></td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(m\)</span></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p><strong>Block 2 (river initial condition)</strong></p></li>
+<li><p>Pre-table:</p></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Value1</th>
+<th align="center">Value2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Number of rows ( <span class="math inline">\(N_{riv}\)</span>)</td>
+<td align="center">Number of columns (<span class="math inline">\(2\)</span>)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Table</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Colname</th>
+<th align="center">Meaning</th>
+<th align="center">Range</th>
+<th align="center">Unit</th>
+<th align="center">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">ID</td>
+<td align="center">Index of river <span class="math inline">\(i\)</span></td>
+<td align="center">1 ~ <span class="math inline">\(N_{riv}\)</span></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">Stage</td>
+<td align="center">Stage of river <span class="math inline">\(i\)</span></td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(m\)</span></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="time-series-data" class="section level2">
+<h2><span class="header-section-number">3.3</span> Time-series data</h2>
+<div id="tsd.forc-file" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> .tsd.forc file</h3>
+<div class="figure">
+<img src="Fig/IO/tsd.forc.png" alt="Example of .tsd.forc file" />
+<p class="caption">Example of .tsd.forc file</p>
+</div>
+<ul>
+<li>Line 1: <code>Number of forcing sites | Start day (YYYYMMDD)</code></li>
+<li>Line 2: Directory to the spreadsheet</li>
+<li>Line 3~N: Filenames of spreadsheet</li>
+</ul>
+<div class="figure">
+<img src="Fig/IO/tsd.csv.png" alt="Example of .csv forcing file" />
+<p class="caption">Example of .csv forcing file</p>
+</div>
+<ul>
+<li>Pre-table:</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Value1</th>
+<th align="center">Value2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">( <span class="math inline">\(0\)</span>)</td>
+<td align="center">Number of columns (<span class="math inline">\(6\)</span>)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Table</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Colname</th>
+<th align="center">Meaning</th>
+<th align="center">Range</th>
+<th align="center">Unit</th>
+<th align="center">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Day</td>
+<td align="center">Time</td>
+<td align="center">0 ~ <span class="math inline">\(N_{day}\)</span></td>
+<td align="center"><span class="math inline">\(day\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">PRCP</td>
+<td align="center">Precipitation</td>
+<td align="center">0 ~ 1</td>
+<td align="center"><span class="math inline">\(m/day\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">TEMP</td>
+<td align="center">Temperature</td>
+<td align="center">-100 ~ 70</td>
+<td align="center"><span class="math inline">\(C\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">RH</td>
+<td align="center">Relative Humidity</td>
+<td align="center">0 ~ 1</td>
+<td align="center"><span class="math inline">\(-\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">wind</td>
+<td align="center">Wind Speed</td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(m/day\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">Rn</td>
+<td align="center">Solar (shortwave) radiation</td>
+<td align="center">?</td>
+<td align="center"><span class="math inline">\(J/day/m^2\)</span></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tsd.lai-file" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> .tsd.lai file</h3>
+<div class="figure">
+<img src="Fig/IO/tsd.lai.png" alt="Example of .tsd.lai file" />
+<p class="caption">Example of .tsd.lai file</p>
+</div>
+<ul>
+<li>Pre-table:</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Value1</th>
+<th align="center">Value2</th>
+<th align="center">Value3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Number of day ( <span class="math inline">\(N_{time}\)</span>)</td>
+<td align="center">Number of columns (<span class="math inline">\(N_{lc}\)</span>)</td>
+<td align="center">Start day (YYYYMMDD)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Table</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Colname</th>
+<th align="center">Meaning</th>
+<th align="center">Range</th>
+<th align="center">Unit</th>
+<th align="center">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">TIME</td>
+<td align="center">Time</td>
+<td align="center">0 ~ <span class="math inline">\(N_{time}\)</span></td>
+<td align="center"><span class="math inline">\(day\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">Column 2</td>
+<td align="center">LAI of land cover 1</td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(m^2/m^2\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">Column i</td>
+<td align="center">LAI of land cover <span class="math inline">\(i-1\)</span></td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(m^2/m^2\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tsd.rl-file" class="section level3">
+<h3><span class="header-section-number">3.3.3</span> .tsd.rl file</h3>
+<div class="figure">
+<img src="Fig/IO/tsd.rl.png" alt="Example of .tsd.rl file" />
+<p class="caption">Example of .tsd.rl file</p>
+</div>
+<ul>
+<li>Pre-table:</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Value1</th>
+<th align="center">Value2</th>
+<th align="center">Value3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Number of day ( <span class="math inline">\(N_{time}\)</span>)</td>
+<td align="center">Number of columns (<span class="math inline">\(N_{lc}\)</span>)</td>
+<td align="center">Start day (YYYYMMDD)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Table</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Colname</th>
+<th align="center">Meaning</th>
+<th align="center">Range</th>
+<th align="center">Unit</th>
+<th align="center">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">TIME</td>
+<td align="center">Time</td>
+<td align="center">0 ~ <span class="math inline">\(N_{time}\)</span></td>
+<td align="center"><span class="math inline">\(day\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">Column 2</td>
+<td align="center">Roughness length of land cover 1</td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(m\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">Column i</td>
+<td align="center">Roughness length of land cover <span class="math inline">\(i-1\)</span></td>
+<td align="center">0 ~ inf</td>
+<td align="center"><span class="math inline">\(m\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tsd.mf-file" class="section level3">
+<h3><span class="header-section-number">3.3.4</span> .tsd.mf file</h3>
+<div class="figure">
+<img src="Fig/IO/tsd.mf.png" alt="Example of .tsd.mf file" />
+<p class="caption">Example of .tsd.mf file</p>
+</div>
+<ul>
+<li>Pre-table:</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Value1</th>
+<th align="center">Value2</th>
+<th align="center">Value3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Number of day ( <span class="math inline">\(N_{time}\)</span>)</td>
+<td align="center">Number of columns (<span class="math inline">\(N_{mf}\)</span>)</td>
+<td align="center">Start day (YYYYMMDD)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Table</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Colname</th>
+<th align="center">Meaning</th>
+<th align="center">Range</th>
+<th align="center">Unit</th>
+<th align="center">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">TIME</td>
+<td align="center">Time</td>
+<td align="center">0 ~ <span class="math inline">\(N_{time}\)</span></td>
+<td align="center"><span class="math inline">\(day\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">Column 2</td>
+<td align="center">Melt factor 1</td>
+<td align="center">0 ~ inf</td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">Column i</td>
+<td align="center">Melt factor <span class="math inline">\(i-1\)</span></td>
+<td align="center">0 ~ inf</td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tsd.obs-file" class="section level3">
+<h3><span class="header-section-number">3.3.5</span> .tsd.obs file</h3>
+<div class="figure">
+<img src="Fig/IO/tsd.obs.png" alt="Example of .tsd.obs file" />
+<p class="caption">Example of .tsd.obs file</p>
+</div>
+<ul>
+<li>Pre-table:</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Value1</th>
+<th align="center">Value2</th>
+<th align="center">Value3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Number of day ( <span class="math inline">\(N_{time}\)</span>)</td>
+<td align="center">Number of columns (<span class="math inline">\(N_{obs}\)</span>)</td>
+<td align="center">Start day (YYYYMMDD)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Table</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Colname</th>
+<th align="center">Meaning</th>
+<th align="center">Range</th>
+<th align="center">Unit</th>
+<th align="center">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">TIME</td>
+<td align="center">Time</td>
+<td align="center">0 ~ <span class="math inline">\(N_{time}\)</span></td>
+<td align="center"><span class="math inline">\(day\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">Column 2</td>
+<td align="center">Observational data 1</td>
+<td align="center">?</td>
+<td align="center">?</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">Column i</td>
+<td align="center">Observational data <span class="math inline">\(i-1\)</span></td>
+<td align="center">?</td>
+<td align="center">?</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="install-shud-and-shud-tools.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="output-files.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["SHUD_User_Guide.pdf", "SHUD_User_Guide.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

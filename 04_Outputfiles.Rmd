@@ -1,0 +1,93 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+# Output files
+
+
+## Output file names
+
+Format of output file names:
+
+**[Project Name].[Identifier].[Format]**
+
+-The *[Project Name]* is user defined name of the project, so every input and output files must start with the *[Project Name]*. 
+-The *[Format]* is one of *csv* or *dat*. *csv* is spreadsheet format and *dat* is bindary format.
+
+The *[Identifier]* is a combination of variables features, that in format of:
+**[Model Unit][Variable Type][Variable Name]**. *[Model Unit]* is one of three options of *ele* (elemtns), *riv* (river) or *lak* (lake). Variable type includes *y*, *v* and *q* that are state variable (in $L$), specific flux (in $L^3/L^2/T$) and flux (in $L^3/T$) respectively.  
+
+The list of output files is in following table. 
+
+| Identifier | Mod unit | Type | Var Name | Meaning | Unit
+|:--------:|:-----:|:---:|:------:|:-------:|:------------:|:-----:|
+| *.eleyic.* | ele | y | ic | Storage of Interception  | $m$  |
+| *.eleysnow.* | ele | y | snow |  Storage of snow equivalence | $m$  |
+| *.eleysurf.* | ele | y | surf |  Storage of surface | $m$  | 
+| *.eleyunsat.* | ele | y | unsat |  Storage of vados zone | $m$  |
+| *.eleygw.* | ele | y | gw |  Groundwater head | $m$  | .GW |
+| *.elevetp.* | ele | v | etp | Potential ET  | $\frac{m^3}{m^2 d}$  |
+| *.eleveta.* | ele | v | eta | Actual ET  | $\frac{m^3}{m^2 d}$  | 
+| *.elevetic.* | ele | v | etic |  Evap of interception | $\frac{m^3}{m^2 d}$  | 
+| *.elevettr.* | ele | v | ettr | Transpiration  | $\frac{m^3}{m^2 d}$  |
+| *.elevetev.* | ele | v | etev | Soil Evaporation  | $\frac{m^3}{m^2 d}$  |
+| *.elevprcp.* | ele | v | prcp | Precipitation  | $\frac{m^3}{m^2 d}$  |
+| *.elevnetprcp.* | ele | v | netprcp | Net Precipitation  | $\frac{m^3}{m^2 d}$  |
+| *.elevinfil.* | ele | v | infil |  Infiltration Rate | $\frac{m^3}{m^2 d}$  |
+| *.elevexfil.* | ele | v | infil |  Exfiltration Rate | $\frac{m^3}{m^2 d}$  |
+| *.elevrech.* | ele | v | rech | Recharge Rate  | $\frac{m^3}{m^2 d}$  |
+| *.eleqsurf.* | ele | q | surf | Overland flow  | $m^3/d$  | 
+| *.eleqsub.* | ele | q | sub | Subsurface flow  | $m^3/d$  | 
+| *.rivystage.* | riv | y | stage | River Stage  | $m$  |
+| *.rivqup.* | riv | q | up | Flux to upstream | $m^3/d$  | 
+| *.rivqdown.* | riv | q | down |  Flux to downstream | $m^3/d$  | 
+| *.rivqsurf.* | riv | q | surf | Flux to landsurface  | $m^3/d$  |
+| *.rivqsub.* | riv | q | sub | Flux to subsurface  | $m^3/d$  |
+
+## Data format in ASCII (.csv) file
+N - Number of column of output data, excluding the time column.
+m - Number of time-step.
+StartTime - String of date/time (YYYYMMDD or YYYYMMDD.hhmmss)
+
+| N | StartTime |  |  |  |
+|:--------:|:-----:|:---:|:------:|:-------:|:------------:|
+| $T_1$ | $v_{1 \cdot 1}$ | $v_{1 \cdot 2}$ | ... | $v_{1 \cdot N}$ |
+| $T_2$ | $v_{2 \cdot 1}$ | $v_{2 \cdot 2}$ | ... | $v_{2 \cdot N}$ |
+| $T_3$ | $v_{3 \cdot 1}$ | $v_{3 \cdot 2}$ | ... | $v_{3 \cdot N}$ |
+| ... | ...| ... | ... | ... |
+| $T_{m}$ | $v_{m \cdot 1}$ | $v_{m \cdot 2}$ | ... | $v_{m \cdot N}$ |
+
+
+## Data format in binary (.dat) file
+The value saved in binary file are identical from ASCII format, but different data structure.
+
+| ID | $i$ | Value | Format | Length |
+|:-----:|:--------:|:--------:|:-----:|:---:|
+| 1 | - | $N$ | double | 8 |
+| 2 | - | StartTime | double | 8 |
+| 3 | 0 | $T_1$ | double | 8 |
+| 4 | 1 | $v_{1 \cdot 1}$ | double | 8 |
+| 5 | 2 | $v_{1 \cdot 2}$ | double | 8 |
+| ... | ... | ... | double | 8 |
+| $(N+1) * (T-1) + i +3$ | N | $v_{1 \cdot N}$  | double | 8 |
+| $(N+1) * (T-1) + i +3$ | 0 | $T_2$ | double | 8 |
+| $(N+1) * (T-1) + i +3$ | 1 | $v_{2 \cdot 1}$ | double | 8 |
+| $(N+1) * (T-1) + i +3$ | 2 | $v_{2 \cdot 2}$ | double | 8 |
+| $(N+1) * (T-1) + i +3$ | ... | ... | double | 8 |
+| $(N+1) * (T-1) + i +3$ | N | $v_{2 \cdot N}$  | double | 8 |
+| $(N+1) * (T-1) + i +3$ | 0 | $T_3$ | double | 8 |
+| $(N+1) * (T-1) + i +3$ | 1 | $v_{3 \cdot 1}$ | double | 8 |
+| $(N+1) * (T-1) + i +3$ | 2 | $v_{3 \cdot 2}$ | double | 8 |
+| $(N+1) * (T-1) + i +3$ | ... | ... | double | 8 |
+| $(N+1) * (T-1) + i +3$ | N | $v_{3 \cdot N}$  | double | 8 |
+| $(N+1) * (T-1) + i +3$ | ... | ... | double | 8 |
+| $(N+1) * (T-1) + i +3$ | ... | ... | double | 8 |
+| $(N+1) * (T-1) + i +3$ | ... | ... | double | 8 |
+| $(N+1) * (T-1) + i +3$ | ... | ... | double | 8 |
+| $(N+1) * (m-1) + i +3$ | 0 | $T_{m}$ | double | 8 |
+| $(N+1) * (m-1) + i +3$ | 1 | $v_{m \cdot 1}$ | double | 8 |
+| $(N+1) * (m-1) + i +3$ | 2 | $v_{m \cdot 2}$ | double | 8 |
+| $(N+1) * (m-1) + i +3$ | ... | ... | double | 8 |
+| $(N+1) * (m-1) + i +3$ | N | $v_{m \cdot N}$  | double | 8 |
+

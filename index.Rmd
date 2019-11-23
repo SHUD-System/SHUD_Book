@@ -1,0 +1,116 @@
+--- 
+title: "Solver for Hydrologic Unstructured Domain (SHUD)"
+subtitle: 'User Guide'
+author: "Lele Shu (lele.shu@gmail.com)"
+date: "`r Sys.Date()`"
+documentclass: scrbook
+output:
+  bookdown::pdf_book:
+    template: null
+    toc: true
+    toc_depth: 2
+    includes:
+      in_header: preamble.tex
+description: SHUD User Guide
+link-citations: yes
+bibliography: book.bib
+site: bookdown::bookdown_site
+biblio-style: apalike
+---
+
+# Overview {#Overview}
+
+This is a user guide or technical documentation of the SHUD modeling system.
+
+The Solver for Hydrologic Unstructured Domain  (SHUD - pronounced  “SHOULD”) is a multi-process, multi-scale hydrological model where major  hydrological processes are fully coupled using the semi-discrete **Finite Volume Method** (FVM).
+
+**SHUD-tools** is an open-source GIS and hydrological analysis  toolkit designed for SHUD modeling system.  The SHUDtools provides access to the digital data sets (terrain, forcing and parameters) and tools necessary to drive the model, as well as a collection of GIS-based pre- and post-processing tools.
+
+Collectively the system is referred to as the **SHUD Modeling System**. 
+
+The SHUD and SHUD-tools is an open source software, freely available for download at [SHUD website](https://SHUD-system.github.io) or [Github Page](https://github.com/SHUD-System/) along with installation and user guides.
+
+## Standing on the shoulder of giant
+SHUD is a descendent of **Penn State Integrated Hydrologic Model (PIHM)**, SHUD inherits the fundamental idea of solving hydrological variables in CVODE, but the model structure, compurational algorithm, programing laguage and input/out files are redesigned. The SHUD is imcompatible to PIHM. 
+
+It is our intention (me and previous PIHM group)to begin a debate on the role of *Community Models* in the hydrologic sciences. 
+
+SHUD and PIHM represents our strategy for the synthesis of *multi-state*, *multiscale* distributed hydrologic models using the integral representation of the underlying physical process equations and state variables. 
+
+Our interest is in devising a concise representation of watershed and/or river basin hydrodynamics, which allows interactions among major physical processes operating simultaneously, but with the flexibility to add or eliminate states/processes/constitutive relations depending on the objective of the numerical experiment or purpose of the scientific or operational application.
+
+To satisfy the objectives, the SHUD
+
+- is distributed hydrologic model, based on the semi-discrete **Finite Volume Method (FVM)** in which domain discretization is an unstructured triangular irregular network (e.g. Delaunay triangles) generated with constraints (geometric, and parametric). A local prismatic control volume is formed by the vertical projection of the Delaunay triangles forming each layer of the model. Given a set of constraints (e.g. river network support, watershed boundary, altitude zones, ecological regions, hydraulic properties, climate zones, etc), an “optimal” mesh is generated. River volume elements are also prismatic, with trapezoidal or rectangular cross-section, and are generated along or cross edges of Delaunay triangles. The local control volume contains all equations to be solved and is referred to as the model kernel. 
+- is a physically-based model, in which all equations used are describing the physics of the hydrological processes which control the catchment. The physical model is able to predict the water in the ungage water system, to estimate the sediment, pullutants, and vegetation, etc, such that it is practical to be coupled with biochemistry, geomorphology, limnology, and other water-related research. 
+The global ODE system is assembled by combining all local ODE systems throughout the domain and then solved by a state-of-the-art parallel ODE solver known as CVODE developed at the Lawrence Livermore National Laboratory.
+- is a fully-coupled hydrologic model, where the state and flux variables in the hydrologic system are solved within the same time step and conserve the mass. The fluxes are infiltration, overland flow, groundwater recharge, lateral groundwater flow, exchange of river and soil/groundwater and river discharge.
+- is of an adaptable temporal and spatial resolution. The spatial resolution of the model varies from meters to kilometers based requirement of modeling and computing resources. The internal time step of the iteration step is adjustable; it is able to export the status of the catchment in less  1 second to days. Also, the time interval for exporting results is configured flexibly. The flexible spatial and temporal resolution is rather valuable for community model coupling.
+- is an open source model, anyone can access the source code, use and submit their improvement.
+- is a long-term yield and single-event flood model.
+
+
+## Brief History of PIHM system
+- 2005 PIHM v1.0
+
+Dr. Yizhong Qu [@Qu2007] developed and verified the first version of PIHM in 2001-2005 during his Ph.D. in Pennsylvania State Unversity, following the blueprint of Freeze and Harlan (1969). This version of PIHM is the soul of the PIHM model.
+
+- 2009 PIHMgis 
+
+Dr. Gopal Bhartt [@Bhatt2012] developed the PIHMgis with support of C++, Qt GUI library, TRIANGLE library, and QGIS developing kit. The development of PIHMgis makes the learning curve of PIHM moderate and benefits the developing, modeling and coupling.
+
+- 2015 MM-PIHM
+
+Dr. Yuninh Shi led and developed the MM-PIHM (Multi-Module PIHM), which embedded all modules from PIHM family, such as RT-PIHM, LE-PIHM, flux-PIHM, BGC-PIHM, etc. together. The sophisticated design and coupling of the MM-PIHM is the summit of the PIHM as a *Community Model* that combined all water-related modules together.
+
+- 2019 PIHM++
+
+  Based on the accumulated contribution of PIHM modeling and coupling with related researches, it is necessary to solve the known bugs and limitations,
+  improve the performance of the model with parallel methods, and adopt new updates from SUNDIALS solver and programming strategy. 
+  
+Several publications that may helps:
+
+- [@Qu2004]
+- [@Qu2007]
+- [@Li2008]
+- [@Kumar2004a]
+- [@Kumar2009d]
+- [@Yu2015]
+- [@Yu2014]
+- [@Li2011]
+- [@Shi2015]
+- [@Shi2015a]
+- [@Bhatt2014]
+
+## Steps of modeling with SHUD
+
+
+### Essential Terrestrial Variables?
+
+- Atmospheric forcing (precipitation, snow cover, wind, relative humidity, temperature, net radiation, albedo, photosynthetic atmospheric radiation, leaf area index)
+- Digital elevation model (DEM)
+- River/stream discharge
+- Soil (class, hydrologic properties)
+- Groundwater (levels, extent, hydro-geologic properties)
+- Lake/Reservoir (levels, extent)
+- Land cover and land use (biomass, human infrastructure, demography, ecosystem disturbance)
+- Water use
+
+Most data reside on federal servers ....many petabytes
+
+### A-Priori Data Sources
+
+|Feature/Time-Series | Property | Source|
+|:------:|:------------:|:------------------------------:|
+|Soil| Porosity; Sand, Silt, Clay Fractions; Bulk Density | CONUS, SSURGO and STATSGO|
+|Geology| Bed Rock Depth; Horizontal and Vertical Hydraulic Conductivity | http://www.dcnr.state.pa.us/topogeo/, http://www.lias.psu.edu/emsl/guides/X.html|
+|Land Cover|LAI |[UMC](http://glcf.umiacs.umd.edu/data/landcover/data.shtml), [LDASmapveg](http://ldas.gsfc.nasa.gov/LDAS8th/MAPPED.VEG/LDASmapveg.shtml); |
+|Land Cover|Manning’s Roughness; | Hernandez et. al., 2000 |
+|River| Manning’s Roughness;| Dingman (2002) |
+|River| Coefficient of Discharge | ModHms Manual (Panday and Huyakorn, 2004) |
+|River| Shape and Dimensions; | Derived from regression using depth, width, and discharge data from [USGS data](http://nwis.waterdata.usgs.gov/usa/nwis/measurements)|
+|River| Topology: Nodes, Neighboring Elements; | Derived using PIHMgis (Bhatt et. al., 2008)|
+|Forcing| Prec, Temp. RH, Wind, Rad. | National Land Data Assimilation System: NLDAS-2|
+|Topography| DEM |http://seamless.usgs.gov/ |
+|Streamflow| | http://nwis.waterdata.usgs.gov/nwis/sw |
+|Groundwater| | http://nwis.waterdata.usgs.gov/nwis/gw |

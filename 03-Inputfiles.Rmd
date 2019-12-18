@@ -4,22 +4,22 @@ List of input files:
 
 | File | Category | Comments | Header | # of column |
  |:------:|:------------------:|:------:|:------:|:---------------------:|
-| .mesh | sp | Domain **element** (triangular mesh)  | Yes | |
-| .att | sp | Attribute table of triangular **elements**  | Yes | |
-| .riv | sp | **Rivers**  | Yes | |
-| .rivchn | sp | Topologic relation b/w **River** and **Element**  | Yes | |
+| .mesh | sp | Domain  cell  (triangular mesh)  | Yes | |
+| .att | sp | Attribute table of triangular  cells   | Yes | |
+| .riv | sp |  Rivers   | Yes | |
+| .rivseg | sp | Topologic relation b/w  River  and  cell   | Yes | |
 | .calib | cfg | Calibration on physical parameters  | Yes | |
 | .para | cfg |  Parameters of the model configurature  | Yes | |
 | .ic | cfg | Intial conditions  | Yes | |
-| .geol | para | Physical parameters for **Geology** layers  | Yes | |
-| .soil | para | Physical parameters for **Soil** layers  | Yes | |
-| .lc | para | Physical parameters for **Land cover** layers  | Yes | |
+| .geol | para | Physical parameters for  Geology  layers  | Yes | |
+| .soil | para | Physical parameters for  Soil  layers  | Yes | |
+| .lc | para | Physical parameters for  Land cover  layers  | Yes | |
 | .forc | tsd | List of files to the Time-series forcing data | Yes | |
-| .csv | tsd | Time-series **forcing** data  | Yes | |
-| .lai | tsd | Time-series **LAI** data  | Yes | |
+| .csv | tsd | Time-series  forcing  data  | Yes | |
+| .lai | tsd | Time-series  LAI  data  | Yes | |
 | .obs | tsd | Time-series observational data for calibration purpose only  | Yes | |
-| .mf | tsd | Time-series **Melt Factor** data  | Yes | |
-| .rl | tsd | Time-series **Roughness Length** data  | Yes | |
+| .mf | tsd | Time-series  Melt Factor  data  | Yes | |
+| .rl | tsd | Time-series  Roughness Length  data  | Yes | |
 | gis/domain | Shapefile | Shapefile of .mesh file | x | x |
 | gis/river | Shapefile | Shapefile of .riv file | x | x |
 | gis/seg | Shapefile | Shapefile of .rivchn file   | x | x |
@@ -35,28 +35,28 @@ The files in folder *gis* and *fig* are not involved in SHUD modeling, but they 
 
 ![Example of .sp.mesh file (block 1)](Fig/IO/sp.mesh1.png)
 ![Example of .sp.mesh file (block 2)](Fig/IO/sp.mesh2.png)
-There are two tables in the .mesh file, the one is a table of elements and the other is a table of nodes of elements.
+There are two tables in the .mesh file, the one is a table of cells and the other is a table of nodes of cells.
 
-* **Block 1 (Element information)**
+* **Block 1 (cell information)**
 
 - Pre-table
 
 | Value1 | Value2 | 
 |:---------:|:---------:|
-| Number of rows ( $N_{element}$) | Number of columns ($8$) |
+| Number of rows ( $N_{cell}$) | Number of columns ($8$) |
 
 - Table
   
 | Colname | Meaning | Range | Unit | Comments |
  |:------:|:------------------:|:------:|:------:|:---------------------:|
-| ID | Index of element $i$  |  1 ~ $N_{element}$ | - | |
-| Node1 | Node 1 of element $i$ |  1 ~ $N_{node}$ | - | |
-| Node2 | Node 2 of element $i$ |  1 ~ $N_{node}$ | - | |
-| Node3 | Node 3 of element $i$ |  1 ~ $N_{node}$ | - | |
-| Nabr1 | Index of Neighbor 1 of element $i$ |  1 ~ $N_{element}$ | - | |
-| Nabr2 | Index of Neighbor 2 of element $i$ |  1 ~ $N_{element}$ | - | |
-| Nabr3 | Index of Neighbor 3 of element $i$ |  1 ~ $N_{element}$ | - | |
-| Zmax | Surface elevation of  element $i$| -9999 ~ +inf | $m$ | |
+| ID | Index of cell $i$  |  1 ~ $N_{cell}$ | - | |
+| Node1 | Node 1 of cell $i$ |  1 ~ $N_{node}$ | - | |
+| Node2 | Node 2 of cell $i$ |  1 ~ $N_{node}$ | - | |
+| Node3 | Node 3 of cell $i$ |  1 ~ $N_{node}$ | - | |
+| Nabr1 | Index of Neighbor 1 of cell $i$ |  1 ~ $N_{cell}$ | - | |
+| Nabr2 | Index of Neighbor 2 of cell $i$ |  1 ~ $N_{cell}$ | - | |
+| Nabr3 | Index of Neighbor 3 of cell $i$ |  1 ~ $N_{cell}$ | - | |
+| Zmax | Surface elevation of  cell $i$| -9999 ~ +inf | $m$ | |
 
 
 * **Block 2 (node information)**
@@ -71,7 +71,7 @@ There are two tables in the .mesh file, the one is a table of elements and the o
   
 | Colname | Meaning | Range | Unit | Comments |
  |:------:|:------------------:|:------:|:------:|:---------------------:|
-| ID | Index of node $i$  |  1 ~ $N_{element}$ | - | |
+| ID | Index of node $i$  |  1 ~ $N_{cell}$ | - | |
 | X | X coordinate of node $i$ |  1 ~ $N_{node}$ | - | |
 | Y | Y coordinate of node $i$ |  1 ~ $N_{node}$ | - | |
 | AqDepth | Thickness of aquifer $i$| 0 ~ +inf | $m$ | |
@@ -89,19 +89,20 @@ There are two tables in the .mesh file, the one is a table of elements and the o
 
 | Value1 | Value2 | 
 |:---------:|:---------:|
-| Number of rows ( $N_{element}$) | Number of columns ($7$) |
+| Number of rows ( $N_{cell}$) | Number of columns ($7$) |
 
 - Table
   
 | Colname | Meaning | Range | Unit | Comments |
  |:------:|:------------------:|:------:|:------:|:---------------------:|
-| ID | Index of element $i$  |  1 ~ $N_{element}$ | - | |
+| ID | Index of cell $i$  |  1 ~ $N_{cell}$ | - | |
 | SOIL | Index of soil type  |  1 ~ $N_{soil}$ | - | |
 | GEOL | Index of geology type  |  1 ~ $N_{geol}$ | - | |
 | LC | Index of land cover type  |  1 ~ $N_{lc}$ | - | $N_{lc}$ = $N_{lai}$ |
 | FORC | Index of forcing site  |  1 ~ $N_{forc}$ | - | |
 | MF | Index of melt factor  |  1 ~ $N_{mf}$ | - | |
 | BC | Index of boundary condition  |  1 ~ $N_{bc}$ | - | |
+| SS | Index of Source/Sink condition  |  1 ~ $N_{bc}$ | - | |
 
 ### .sp.riv file
 
@@ -140,7 +141,7 @@ There are two tables in the .mesh file, the one is a table of elements and the o
  |:------:|:------------------:|:------:|:------:|:---------------------:|
 | ID | Index of segments $i$  |  1 ~ $N_{segment}$ | - | |
 | iRiv | Index of river |  1 ~ $N_{river}$ | - | |
-| iEle | Index of element |  1 ~ $N_{element}$ | - | |
+| iEle | Index of cell |  1 ~ $N_{cell}$ | - | |
 | Length | Length of the segments $i$  |  0 ~ inf | $m$ | |
 
 ## Model configuration files
@@ -151,40 +152,38 @@ There are two tables in the .mesh file, the one is a table of elements and the o
 
 - Table
   
-| Colname | Meaning | Range | Unit | Comments |
+| Colname | Meaning | Range | Unit | Default value |
  |:-------------:|:------------------:|:------:|:------:|:---------------------:|
-| VERBOSE| Verbose mode | - | - | |  
-| DEBUG| Debug mode | - | - | |  
-| INIT_MODE| Initial condition mode | 1,2,3| - | 1=Dry condition, 2=Relief conditon, 3=Warm start|  
-| ASCII_OUTPUT| ASCII ouput | 1/0 | - | |  
-| Binary_OUTPUT| Binary output | 1/0 | - | |  
-| NUM_OPENMP| Number of threads for OpenMP | 0 ~ $N_{threads}$ | - | |  
-| ABSTOL| Abosolute tolerance for CVODE solver | 1e-6 ~ 0.1 | - | |  
-| RELTOL| Relative tolerance for CVODE solver | 1e-6 ~ 0.1 | - | |  
-| INIT_SOLVER_STEP| Initial time step for CVODE solver | ? | - | |  
-| MAX_SOLVER_STEP| Maximum time step for CVODE solver | ? | - | |  
-| ET_STEP| Time step of Evapotranspiration | 1~360 | $min$ | |  
-| START| Start Time | 0 ~ inf | $day$ | |  
-| END| End Time | - | $day$ | |  
-| dt_ye_snow | Time step of output snow storage | 0 ~ inf | $min$ | |  
-| dt_ye_surf | Time step of output surface storage | 0 ~ inf | $min$ | |  
-| dt_ye_unsat | Time step of output unsaturated storage | 0 ~ inf | $min$ | |  
-| dt_ye_gw | Time step of output groundwater head | 0 ~ inf | $min$ | |  
-| dt_Qe_surf | Time step of output surface element flux | 0 ~ inf | $min$ | |  
-| dt_Qe_sub | Time step of output subsurface element flux  | 0 ~ inf | $min$ | |  
-| dt_qe_et0 | Time step of output element flux, interception | 0 ~ inf | $min$ | |  
-| dt_qe_et1 | Time step of output element flux, transpiration | 0 ~ inf | $min$ | |  
-| dt_qe_et2 | Time step of output element flux, evaporation | 0 ~ inf | $min$ | |  
-| dt_qe_etp | Time step of output element flux, potential ET | 0 ~ inf | $min$ | |  
-| dt_qe_prcp | Time step of output element flux, interception | 0 ~ inf | $min$ | |  
-| dt_qe_infil | Time step of output element flux, interception | 0 ~ inf | $min$ | |  
-| dt_qe_rech | Time step of output element flux, interception | 0 ~ inf | $min$ | |  
-| dt_yr_stage | Time step of output river stage | 0 ~ inf | $min$ | |  
-| dt_Qr_down | Time step of output river flux, downstream | 0 ~ inf | $min$ | |  
-| dt_Qr_surf | Time step of output river flux, surface flow | 0 ~ inf | $min$ | |  
-| dt_Qr_sub | Time step of output river flux, base flow | 0 ~ inf | $min$ | |  
-| dt_Qr_up | Time step of output river flux, upstream | 0 ~ inf | $min$ | |  
-
+| VERBOSE| Verbose mode | - | - | 0 |  
+| INIT_MODE| Initial condition mode | 0~3| - | 3 (0=Relief conditon, 1=Dry condition, 2=Default guess, 3=Warm start)|  
+| ASCII_OUTPUT| ASCII ouput | 1/0 | - | 0 | 
+| Binary_OUTPUT| Binary output | 1/0 | - | 1 |  
+| SPINUPDAY| Days for spinup | 0 ~ inf | $day$ | 0 |  
+| SCR_INTV| Number of threads for OpenMP | 0 ~ $N_{threads}$ | $min$ | 1440 |  
+| ABSTOL| Abosolute tolerance for CVODE solver | 1e-6 ~ 0.1 | - | 0.0001 |  
+| RELTOL| Relative tolerance for CVODE solver | 1e-6 ~ 0.1 | - | 0.0001 |  
+| INIT_SOLVER_STEP| Initial time step for CVODE solver | - | $min$ | 1 |  
+| MAX_SOLVER_STEP| Maximum time step for CVODE solver | 1~60 | $min$ | 10 |  
+| ET_STEP| Time step of Evapotranspiration | 1~360 | $min$ | 60 |  
+| START| Start Time | 0 ~ inf | $day$ | 0|  
+| END| End Time | - | $day$ | - |  
+| dt_ye_snow | Time step of output snow storage | 0 ~ inf | $min$ | 1440 |  
+| dt_ye_surf | Time step of output surface storage | 0 ~ inf | $min$ | 1440 |  
+| dt_ye_unsat | Time step of output unsaturated storage | 0 ~ inf | $min$ | 1440 |  | dt_ye_gw | Time step of output groundwater head | 0 ~ inf | $min$ | 1440 |  
+| dt_Qe_surf | Time step of output surface cell flux | 0 ~ inf | $min$ | 1440 |  
+| dt_Qe_sub | Time step of output subsurface cell flux  | 0 ~ inf | $min$ | 1440 |  
+| dt_qe_et0 | Time step of output cell flux, interception | 0 ~ inf | $min$ | 1440 |  
+| dt_qe_et1 | Time step of output cell flux, transpiration | 0 ~ inf | $min$ | 1440 |  
+| dt_qe_et2 | Time step of output cell flux, evaporation | 0 ~ inf | $min$ | 1440 |  
+| dt_qe_etp | Time step of output cell flux, potential ET | 0 ~ inf | $min$ | 1440 |  
+| dt_qe_prcp | Time step of output cell flux, interception | 0 ~ inf | $min$ | 1440 |  
+| dt_qe_infil | Time step of output cell flux, interception | 0 ~ inf | $min$ | 1440 |  
+| dt_qe_rech | Time step of output cell flux, interception | 0 ~ inf | $min$ | 1440 |  
+| dt_yr_stage | Time step of output river stage | 0 ~ inf | $min$ | 1440 |  
+| dt_Qr_down | Time step of output river flux, downstream | 0 ~ inf | $min$ | 1440 |  
+| dt_Qr_surf | Time step of output river flux, surface flow | 0 ~ inf | $min$ | 1440 |  
+| dt_Qr_sub | Time step of output river flux, base flow | 0 ~ inf | $min$ | 1440 |  
+| dt_Qr_up | Time step of output river flux, upstream | 0 ~ inf | $min$ | 1440 |  
 
 
 ### .cfg.calib file
@@ -210,7 +209,7 @@ There are two tables in the .mesh file, the one is a table of elements and the o
 | SOIL_MACHF | Horizontal macropore areal fraction |  | - | |  
 | LC_VEGFRAC | Vegetation fraction |  | - | |  
 | LC_ALBEDO | Emissitive reflection ratio |  | - | |  
-| LC_ROUGH | Manning's roughness of element surface |  | - | |  
+| LC_ROUGH | Manning's roughness of cell surface |  | - | |  
 | LC_SOILDGD | Soil degradation |  | - | |  
 | LC_IMPAF | Impervious areal fraction |  | - | |  
 | LC_ISMAX | Maximum interception |  | - | |  
@@ -236,24 +235,24 @@ There are two tables in the .mesh file, the one is a table of elements and the o
 
 ![Example of .cfg.ic file](Fig/IO/cfg.ic.png)
 
-* **Block 1 (Element initial condition)**
+* **Block 1 (cell initial condition)**
 
 - Pre-table
 
 | Value1 | Value2 | 
 |:---------:|:---------:|
-| Number of rows ( $N_{element}$) | Number of columns ($6$) |
+| Number of rows ( $N_{cell}$) | Number of columns ($6$) |
 
 - Table
   
 | Colname | Meaning | Range | Unit | Comments |
  |:------:|:------------------:|:------:|:------:|:---------------------:|
-| ID | Index of element $i$  |  1 ~ $N_{element}$ | - | |
-| Canopy | Canopy storage of element $i$  |  0 ~ inf | $m$ | |
-| Snow | Snow storage of element $i$  |  0 ~ inf | $m$ | |
-| Surface | Surface storage of element $i$  |  0 ~ inf | $m$ | |
-| Unsat | Unsaturated storage of element $i$  |  0 ~ inf | $m$ | |
-| GW | Groundwater head of element $i$  |  0 ~ inf | $m$ | |
+| ID | Index of cell $i$  |  1 ~ $N_{cell}$ | - | |
+| Canopy | Canopy storage of cell $i$  |  0 ~ inf | $m$ | |
+| Snow | Snow storage of cell $i$  |  0 ~ inf | $m$ | |
+| Surface | Surface storage of cell $i$  |  0 ~ inf | $m$ | |
+| Unsat | Unsaturated storage of cell $i$  |  0 ~ inf | $m$ | |
+| GW | Groundwater head of cell $i$  |  0 ~ inf | $m$ | |
 
 * **Block 2 (river initial condition)**
 

@@ -2,19 +2,9 @@
 
 Some _significant_ applications are demonstrated in this chapter.
 
-## Best practice suggestions
-
+**Best practice suggestions**
 1. Derive and QC all inputs (time mean, accumulation, screen fo anormalies ...)
 1. Conduct offline simulations ...
 1. Start with 'idealized' forcing (Option FORC_debug=1 in .cfg.para file). Which will use uniform forcing data to drive the hydrologic simulations.
 1. Run with short time period, load the outputs and examine whether results are in expection 
 1. If all above works, then hook all modules and run with your forcing data.
-
-
-*This chapter is imcomplete*
-
-## Example 1: Vauclin Experiment
-
-## Example 2: Shall Hill CZO
-
-## Example 3: Conestoga Watershed, Pennsylvanis

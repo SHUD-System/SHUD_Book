@@ -1,8 +1,8 @@
-# Install SHUD and SHUD-tools
+# Install SHUD and SHUDtoolbox
 
 ## SUNDIALS/CVODE
-The SHUD model requires the support of SUNDIALS or CVODE library. 
-[**SUNDIALS**](https://computation.llnl.gov/projects/sundials) is a SUite of Nonlinear and DIfferential/ALgebraic equation Solvers, consists of six solvers.  [**CVODE**](https://computation.llnl.gov/projects/sundials/cvode) is a solver for stiff and nonstiff ordinary differential equation (ODE) systems (initial value problem) given in explicit form $y' = f(t,y)$. The methods used in CVODE are variable-order, variable-step multistep methods. You can install the entire SUNDIALS suite or CVODE only. 
+The SHUD model requires the support of the SUNDIALS or CVODE library. 
+[**SUNDIALS**](https://computation.llnl.gov/projects/sundials) is a SUite of Nonlinear and Differential/ALgebraic equation Solvers, consists of six solvers.  [**CVODE**](https://computation.llnl.gov/projects/sundials/cvode) is a solver for stiff and nonstiff ordinary differential equation (ODE) systems (initial value problem) given in explicit form $y' = f(t,y)$. The methods used in CVODE are variable-order, variable-step multistep methods. You can install the entire SUNDIALS suite or CVODE only. 
 
 Since the SUNDIALS/CVODE keeps updating periodically and significantly, the function names and structure are changed accordingly, we suggest to use the specific version of the solver, rather than the latest solver.
 
@@ -13,12 +13,10 @@ SUNDIALS/CVODE is available in [LLNL: https://computation.llnl.gov/projects/sund
 The installation of CVODE v3.x:
 
 
-1. Go to your Command Line and enter your workspace and unzip your CVODE source code here.
-1. make directories for CVODE, including *builddir*, *instdir* and *srcdir*
+1. Go to your Command-Line and enter your workspace and unzip your CVODE source code here.
+1. make directories for CVODE, including *builddir*.
 ```
 mkdir builddir
-mkdir instdir
-mkdir srcdir
 cd builddir/
 ```
 1. Try ccmake. Install ``cmake`` if you don't have one.
@@ -70,8 +68,8 @@ There are more options to compile the SHUD code:
 
 - `make all`        - clean, then make both shud and shud_omp
 - `make help`       - help information
-- `make SHUD`       - make SHUD executable
-- `make SHUD_omp`   - make shud_omp with OpenMP support
+- `make shud`       - make SHUD executable
+- `make shud_omp`   - make shud_omp with OpenMP support
 
 
 ### OpenMP
@@ -104,21 +102,50 @@ Command line pattern is:
 
 - `[-o output_folder]` Output directory. Default is output/projname.out
 
-- `[-n Num_Threads]` Number of threads to run with OpenMP, which works with `pihm_omp` only.
+- `[-n Num_Threads]` Number of threads to run with OpenMP, which works with `shud_omp` only.
   Usage:
 
   
 
 When the `shud` program starts to run, the screen should look like this:
-![Screen print of pihm++ running. The example project name is *sh*.](Fig/CLI_vs.png)
+![Screen print of SHUD running.](Fig/CLI_vs.png)
 
-## SHUD-tools
-This SHUD-tools is an R package. What you need is to install the package as a source code package.
+## SHUDtoolbox
+This SHUDtoolbox is an R package. What you need is to install the package as a source code package.
 For example:
 
 ```
-install_github('SHUD-System/shud-tools')
+install_github('SHUD-System/SHUDtoolbox')
 ```
 
-That is all you need to deploy the SHUD-tools.
+The prerequisite packages for SHUDtoolbox are:
+
+- Rcpp
+- reshape2
+- ggplot2
+- gridExtra
+- grid
+- fields
+- xts 
+- hydroGOF
+- zoo
+- raster (>= 2.1.0) 
+- sp 
+- rgeos 
+- RTriangle
+- rgdal (>= 1.1.0)
+- proj4
+- abind
+- utils
+- lubridate
+- geometry
+- methods
+- ncdf4
+- GGally
+- doParallel
+
+One of the required packages, RTriangle, must be installed via GitHub instead of CRAN, using command:
+```
+install_github('shulele/RTriangle/pkg') 
+```
 

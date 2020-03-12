@@ -2,7 +2,7 @@
 This file is a user guide or technical documentation of the SHUD modeling system.
 PDF version of the User Guide is available via :[SHUD User Guide](https://www.shud.xyz/_book/SHUD_User_Guide.pdf)
 
-The Solver for Hydrologic Unstructured Domain  (SHUD - pronounced  “SHOULD”) is a multi-process, multi-scale hydrological model where major  hydrological processes are fully coupled using the semi-discrete **Finite Volume Method** (FVM).
+The Simulator for Hydrologic Unstructured Domain  (SHUD - pronounced  “SHOULD”) is a multi-process, multi-scale hydrological model where major  hydrological processes are fully coupled using the semi-discrete **Finite Volume Method** (FVM).
 
 **SHUDtoolbox** is an open-source GIS and hydrological analysis toolbox designed for the SHUD modeling system.  The SHUDtoolbox provides access to the digital data sets (terrain, forcing, and parameters) and tools necessary to drive the model, as well as a collection of GIS-based pre- and post-processing tools.
 

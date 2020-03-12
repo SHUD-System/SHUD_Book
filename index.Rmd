@@ -1,5 +1,5 @@
 --- 
-title: "Solver for Hydrologic Unstructured Domain (SHUD)"
+title: "Simulator for Hydrologic Unstructured Domain (SHUD)"
 subtitle: 'User Guide'
 author: "Lele Shu (lele.shu@gmail.com)"
 date: "`r Sys.Date()`"

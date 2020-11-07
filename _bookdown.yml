@@ -1,5 +1,23 @@
-book_filename: "SHUD_User_Guide"
+book_filename: "SHUD_Book"
 delete_merged_file: true
 language:
   ui:
     chapter_name: "Chapter "
+output_dir: "../shud.xyz/static/Book_EN"
+rmd_files: [
+"index.Rmd",
+"EN/01-overview.Rmd",
+"EN/02-Install.Rmd",
+"EN/03-Inputfiles.Rmd",
+"EN/04_Outputfiles.Rmd",
+"EN/05-application.Rmd",
+"EN/051_Vcatchment.Rmd",
+"EN/052_Vauclin.Rmd",
+"EN/053_CacheCreek.Rmd",
+"EN/054_Yanhuacun.Rmd",
+"EN/055_Houston.Rmd",
+"EN/056_SouthSudan.Rmd",
+"EN/06-Calibration.Rmd",
+"EN/07-autoSHUD.Rmd",
+"EN/10-SouceCode.Rmd"]
+

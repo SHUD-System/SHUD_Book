@@ -1,6 +1,7 @@
 
 ## Example 1: V-Catchment
-Code annd data are available at [![DOI](https://zenodo.org/badge/226266189.svg)](https://zenodo.org/badge/latestdoi/226266189) or [Github: https://github.com/Model-Intercomparison-Datasets/V-Catchment](https://github.com/Model-Intercomparison-Datasets/V-Catchment)
+Code annd data are available at
+[Github: https://github.com/Model-Intercomparison-Datasets/V-Catchment](https://github.com/Model-Intercomparison-Datasets/V-Catchment)
 
 The V-Catchment (VC) experiment is a standard test case for numerical hydrological models to validate their performance for overland flow along a hillslope and in the presence of a river channel.
 The VC domain consists of two inclined planes draining into a sloping channel. 

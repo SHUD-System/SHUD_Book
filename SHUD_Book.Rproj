@@ -13,4 +13,4 @@ RnwWeave: Sweave
 LaTeX: pdfLaTeX
 
 BuildType: Website
-WebsitePath: ~/Dropbox/SHUD/github/SHUD_User_Guide
+WebsitePath: ~/Dropbox/SHUD/github/SHUD_Book

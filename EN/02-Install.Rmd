@@ -1,4 +1,4 @@
-# Install SHUD and SHUDtoolbox
+# Install SHUD and rSHUD
 
 ## SUNDIALS/CVODE
 The SHUD model requires the support of the SUNDIALS or CVODE library. 
@@ -110,15 +110,15 @@ Command line pattern is:
 When the `shud` program starts to run, the screen should look like this:
 ![Screen print of SHUD running.](Fig/CLI_vs.png)
 
-## SHUDtoolbox
-This SHUDtoolbox is an R package. What you need is to install the package as a source code package.
+## rSHUD
+This rSHUD is an R package. What you need is to install the package as a source code package.
 For example:
 
 ```
-install_github('SHUD-System/SHUDtoolbox')
+install_github('SHUD-System/rSHUD')
 ```
 
-The prerequisite packages for SHUDtoolbox are:
+The prerequisite packages for rSHUD are:
 
 - Rcpp
 - reshape2

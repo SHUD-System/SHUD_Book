@@ -1,7 +1,7 @@
 --- 
-title: "Simulator for Hydrologic Unstructured Domain (SHUD)"
-subtitle: 'User Guide'
-author: "Lele Shu (lele.shu@gmail.com)"
+title: "SHUD模型说明书"
+subtitle: '理论、实践与案例'
+author: "Lele Shu (shulele@lzb.ac.cn)"
 date: "`r Sys.Date()`"
 documentclass: scrbook
 output:
@@ -11,10 +11,9 @@ output:
     toc_depth: 3
     includes:
       in_header: preamble.tex
-description: SHUD User Guide
+description: SHUD Book
 link-citations: yes
 bibliography: book.bib
 site: bookdown::bookdown_site
 biblio-style: apalike
 ---
-# Overview {#Overview}

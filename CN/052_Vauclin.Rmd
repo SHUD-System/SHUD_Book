@@ -1,9 +1,11 @@
-## Example 2: Vauclin Experiment
+## Example 2: Vauclin水槽箱试验   {##ex2}
 
-Code annd data are available at [![DOI](https://zenodo.org/badge/226266864.svg)](https://zenodo.org/badge/latestdoi/226266864) or [Github: https://github.com/Model-Intercomparison-Datasets/Vauclin1979](https://github.com/Model-Intercomparison-Datasets/Vauclin1979).
+本案例数据和源码获取地址：
+<!-- [![DOI](https://zenodo.org/badge/226266864.svg)](https://zenodo.org/badge/latestdoi/226266864) or -->
+[Github: https://github.com/Model-Intercomparison-Datasets/Vauclin1979](https://github.com/Model-Intercomparison-Datasets/Vauclin1979).
 
 
-Vauclin's experiment \citep{Vauclin1979} is designed to assess groundwater table change and soil moisture in the unsaturated layer under precipitation or irrigation.  The experiment was conducted in a sandbox with dimension $3$ m long $\times 2$ m deep $\times 0.05$ m wide (see Fig. \ref{fig:vauclin}). The box was filled with uniform sand particles with measured hydraulic parameters: the saturated hydraulic conductivity was $35$ cm/hr and porosity was $0.33$ m$^3$/m$^3$. The left and bottom of the sandbox were impervious layers, and the top and the right side were open. A hydraulic head was set constant at $0.65 m$. Constant irrigation ($1.48$ cm/hr) was applied over the first $50$ cm of the top-left of the sandbox while the rest of the top was covered to avoid water loss via evaporation.
+Vauclin试验[@Vauclin1979] is designed to assess groundwater table change and soil moisture in the unsaturated layer under precipitation or irrigation.  The experiment was conducted in a sandbox with dimension $3$ m long $\times 2$ m deep $\times 0.05$ m wide (see Fig. \ref{fig:vauclin}). The box was filled with uniform sand particles with measured hydraulic parameters: the saturated hydraulic conductivity was $35$ cm/hr and porosity was $0.33$ m$^3$/m$^3$. The left and bottom of the sandbox were impervious layers, and the top and the right side were open. A hydraulic head was set constant at $0.65 m$. Constant irrigation ($1.48$ cm/hr) was applied over the first $50$ cm of the top-left of the sandbox while the rest of the top was covered to avoid water loss via evaporation.
 
 ![Experiment set-up in Vauclin (1979)](Fig/Example/Vauclin/Vauclin.png)
 
@@ -20,7 +22,7 @@ Besides the parameters specified in \citep{Vauclin1979}, additional information 
 
 This mismatch may be due to (1) the aquifer description of unsaturated and saturated layers limiting the capability to simulate infiltration and recharge in the unsaturated zone, or (2) the horizontal unsaturated flow assumptions no longer hold at the relatively  microscopic scales of this experiment.
 
-The SHUD simulated the groundwater table at all four measurement points (see Fig. \ref{fig:vauclin}(b).  The maximum bias between simulation and Vauclin's observations is $ 5.5cm$, with $R^2$ = $0.99$, that is comparable to the bias $5.2 cm$ of numerical simulation in \citep{Vauclin1979}. When the calibration takes more soil parameters into account, the bias in simulation decreases to  $3 cm$. Certainly, the simplifications employed by SHUD for the unsaturated and saturated zone benefits the computation efficiency while limiting the applicability of the model for micro-scale problems.
+The SHUD simulated the groundwater table at all four measurement points (see Fig. \ref{fig:vauclin}(b).  The maximum bias between simulation and Vauclin's observations is $ 5.5cm$, with $R^2$ = $0.99$, that is comparable to the bias $5.2 cm$ of numerical simulation in \citep{Vauclin1979}. When the calibration takes more soil parameters into account, the bias in simulation decreases to  $3 cm$. Certainly, the simplifications employed by SHUD for the unsaturated and saturated zone benefits the computation efficiency while limiting the applicability of the model for micro-scale problems.
 
 The simulations, compared against Vauclin's experiment, validate the algorithm for infiltration, recharge, and lateral groundwater flow.  More reliable vertical flow within unsaturated layer requires multiple layers, which is planned in next version of SHUD.
 

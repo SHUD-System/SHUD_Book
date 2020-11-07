@@ -1,0 +1,97 @@
+
+# 输出文件 {#outputfiles}
+
+
+
+## 文件名格式
+
+为了方便结果的分类和用户理解，作者规则化定义了输出文件的文件名；用户通过文件名即可读懂文件所包含的变量类型、所属单元和读写格式。输出文件的文件名格式：
+
+**[项目名].[识别码].[格式]**
+
+或者：
+
+**[Project Name].[Identifier].[format]**
+
+- *[项目名]*（*[Project Name]*） 是用户给模拟定的名称，通常为流域的名字简写。例如：黄河流域，可以写成*hh*或者*huanghe*.
+- *[格式]* （*[format]*）可以使用*csv*或者*dat*. *csv*为规则文本格式，可使用任意文本编辑器或者WPS表格打开。*dat*二进制格式，文件占用硬盘空间较小
+
+- *[识别码]* （*[Identifier]*） 定义了输出结果内涵。识别码基本结构为
+**[模型单元][变量类型][变量名]**（**[Model cell][Variable Type][Variable Name]**）。 *[Model cell]* 是*ele* （element，模型三角单元）, *riv* （river，河段） or *lak* （lake，湖泊）. 变量类型包括 *y*, *v* and *q*，分别代表状态变量 （单位$L$）, 单位流量或速度（单位$L^3 L^{-2} T^{-1}$）和体积流量（in $L^3 T^{-1}$）——$L$为长度单位，$T$为时间单位。
+
+
+下表为SHUD输出文件列表：
+
+| 识别码 | 单元 | 类型 | 变量名 | 含义 | 单位
+|:--------:|:-----:|:---:|:------:|:-------:|:------------:|:-----:|
+| *.eleyic.* | ele | y | ic | 储量，冠层截流  | $m$  |
+| *.eleysnow.* | ele | y | snow |  储量，雪水当量 | $m$  |
+| *.eleysurf.* | ele | y | surf |  储量，地表水 | $m$  | 
+| *.eleyunsat.* | ele | y | unsat |  储量，未饱和层 | $m$  |
+| *.eleygw.* | ele | y | gw |  储量，地下水水位 | $m$  | .GW |
+| *.elevetp.* | ele | v | etp | 通量，潜在蒸散发  | $\frac{m^3}{m^2 d}$  |
+| *.eleveta.* | ele | v | eta | 通量，实际蒸散发  | $\frac{m^3}{m^2 d}$  | 
+| *.elevetic.* | ele | v | etic |  通量，冠层截流蒸发 | $\frac{m^3}{m^2 d}$  | 
+| *.elevettr.* | ele | v | ettr | 通量，植被蒸腾  | $\frac{m^3}{m^2 d}$  |
+| *.elevetev.* | ele | v | etev | 通量，直接蒸发  | $\frac{m^3}{m^2 d}$  |
+| *.elevprcp.* | ele | v | prcp | 通量，降雨  | $\frac{m^3}{m^2 d}$  |
+| *.elevnetprcp.* | ele | v | netprcp | 通量，净降雨量  | $\frac{m^3}{m^2 d}$  |
+| *.elevinfil.* | ele | v | infil |  通量，下渗 | $\frac{m^3}{m^2 d}$  |
+| *.elevexfil.* | ele | v | infil |  通量，出渗（反下渗） | $\frac{m^3}{m^2 d}$  |
+| *.elevrech.* | ele | v | rech | 通量，地下水补给  | $\frac{m^3}{m^2 d}$  |
+| *.eleqsurf.* | ele | q | surf | 流量，地表径流（坡面流）  | $m^3/d$  | 
+| *.eleqsub.* | ele | q | sub | 流量， 地下水水平流动 | $m^3/d$  | 
+| *.rivystage.* | riv | y | stage | 储量，河段水位  | $m$  |
+| *.rivqup.* | riv | q | up | 流量，向上游 | $m^3/d$  | 
+| *.rivqdown.* | riv | q | down |  流量，向下游 | $m^3/d$  | 
+| *.rivqsurf.* | riv | q | surf | 流量，向坡面  | $m^3/d$  |
+| *.rivqsub.* | riv | q | sub | 流量，向地下水  | $m^3/d$  |
+
+## 文本格式输出文件（.csv）
+N - 输出文件列数（不含时间列）
+m - 步长总数
+StartTime - 开始时间 （YYYYMMDD or YYYYMMDD.hhmmss）
+
+| N | StartTime |  |  |  |
+|:--------:|:-----:|:---:|:------:|:-------:|:------------:|
+| $T_1$ | $v_{1 \cdot 1}$ | $v_{1 \cdot 2}$ | ... | $v_{1 \cdot N}$ |
+| $T_2$ | $v_{2 \cdot 1}$ | $v_{2 \cdot 2}$ | ... | $v_{2 \cdot N}$ |
+| $T_3$ | $v_{3 \cdot 1}$ | $v_{3 \cdot 2}$ | ... | $v_{3 \cdot N}$ |
+| ... | ...| ... | ... | ... |
+| $T_{m}$ | $v_{m \cdot 1}$ | $v_{m \cdot 2}$ | ... | $v_{m \cdot N}$ |
+
+
+## 二进制输出文件（.dat）
+二进制文件输出的结果与文本格式完全一致，但是使用了不同的存储结构。二进制文件格式紧凑，读写效率高，占用较小磁盘空间，因此作为SHUD模型的默认输出方式。 二进制文件格式不仅可被各类计算机语言（C/C++, Basic, Fortran，……）快速读取，并且也能在R、python、 Matlab、 Mathmetica等交互式语言中高效读取，如果读取有障碍，请联系模型作者获取帮助。
+
+
+| 序号 | $i$ | 值 | 格式 | 长度 |
+|:-----:|:--------:|:--------:|:-----:|:---:|
+| 1 | - | $N$ | double | 8 |
+| 2 | - | StartTime | double | 8 |
+| 3 | 0 | $T_1$ | double | 8 |
+| 4 | 1 | $v_{1 \cdot 1}$ | double | 8 |
+| 5 | 2 | $v_{1 \cdot 2}$ | double | 8 |
+| ... | ... | ... | double | 8 |
+| $（N+1） * （T-1） + i +3$ | N | $v_{1 \cdot N}$  | double | 8 |
+| $（N+1） * （T-1） + i +3$ | 0 | $T_2$ | double | 8 |
+| $（N+1） * （T-1） + i +3$ | 1 | $v_{2 \cdot 1}$ | double | 8 |
+| $（N+1） * （T-1） + i +3$ | 2 | $v_{2 \cdot 2}$ | double | 8 |
+| $（N+1） * （T-1） + i +3$ | ... | ... | double | 8 |
+| $（N+1） * （T-1） + i +3$ | N | $v_{2 \cdot N}$  | double | 8 |
+| $（N+1） * （T-1） + i +3$ | 0 | $T_3$ | double | 8 |
+| $（N+1） * （T-1） + i +3$ | 1 | $v_{3 \cdot 1}$ | double | 8 |
+| $（N+1） * （T-1） + i +3$ | 2 | $v_{3 \cdot 2}$ | double | 8 |
+| $（N+1） * （T-1） + i +3$ | ... | ... | double | 8 |
+| $（N+1） * （T-1） + i +3$ | N | $v_{3 \cdot N}$  | double | 8 |
+| $（N+1） * （T-1） + i +3$ | ... | ... | double | 8 |
+| $（N+1） * （T-1） + i +3$ | ... | ... | double | 8 |
+| $（N+1） * （T-1） + i +3$ | ... | ... | double | 8 |
+| $（N+1） * （T-1） + i +3$ | ... | ... | double | 8 |
+| $（N+1） * （m-1） + i +3$ | 0 | $T_{m}$ | double | 8 |
+| $（N+1） * （m-1） + i +3$ | 1 | $v_{m \cdot 1}$ | double | 8 |
+| $（N+1） * （m-1） + i +3$ | 2 | $v_{m \cdot 2}$ | double | 8 |
+| $（N+1） * （m-1） + i +3$ | ... | ... | double | 8 |
+| $（N+1） * （m-1） + i +3$ | N | $v_{m \cdot N}$  | double | 8 |
+
+*注：double为计算机的双精度数据格式，默认长度为8个比特位*

@@ -1,0 +1,165 @@
+#  安装 SHUD and rSHUD {#install}
+
+## SUNDIALS/CVODE
+SHUD模型的求解需要SUNDIAL中CVODE库的支持。
+SUNDIALS（SUite of Nonlinear and Differential/ALgebraic equation Solvers）由六个求解器组成；其中的 [**CVODE**](https://computation.llnl.gov/projects/sundials/cvode) 是一个用于求解刚性和非刚性常微分方程系统（初始值问题）的数值求解器，数学表达为： $y' = f(t,y)$. CVODE支持可变阶精度、可变步长数值方法。CVODE字母组合含义为“C版本的可变系数常微分方程求解器(Vriable-Coefficient Ordinary Differential Equation Solver)" 。使用SHUD模型只需要CVODE支持，因此无需安装SUNDIALS所有求解器，只需要安装CVODE即可。
+
+因为SUNDIALS/CVODE持续更新中，代码和函数定义等等变化较大，因此SHUD模型通常仅支持CVODE较新版本，并非所有版本都可支持。
+
+SUNDIALS/CVODE的安装方法有两个种：（1）自行下载安装包； （2）使用SHUD源代码的安装脚本。
+
+### (1) 使用脚本安装CVODE
+
+
+
+### (2) 自行下载并安装CVODE
+
+SUNDIALS/CVODE 代码的下载地址为：[https://computation.llnl.gov/projects/sundials/sundials-software](https://computation.llnl.gov/projects/sundials/sundials-software)。 
+
+
+
+CVODE 5.x安装步骤：
+
+
+1.  进入命令行界面，并解压下载好的cvode压缩包。
+1. 在CVODE的根目录下新建文件夹 *builddir*， 并进入该文件夹。
+```
+mkdir builddir
+cd builddir/
+```
+1. 测试 ccmake. 如果没有 ``cmake``请安装。
+```
+ccmake 
+```
+
+1.  运行ccmake配置安装环境。
+```
+ccmake ../sundials/cvode-5.0.0
+```
+![Screenshot of Step 1 in ccmake](Fig/ccmake/1.png)
+
+首先出现的是空白配置页面。按c开始配置。
+
+![Screen short of Step 2 in ccmake](Fig/ccmake/2.png)
+
+上图为默认的配置信息图片上的四处配置信息需要注意，值需要改为下面的值。OPENMP值需要您的系统支持OpenMP，因此在确认您的系统支持OpenMP的情况下打开。
+
+```
+BUILD_CVODE = ON
+CMAKE_INSTALL_PREFIX = ~/sundials
+EXAMPLES_INSTALL_PATH = ~/sundials/examples
+```
+以上值修改完成后，按c确认配置。
+
+
+
+![Screenshot of Step 3 in ccmake](Fig/ccmake/3.png)
+
+ccmake开始自动配置安装参数。当配置完成后，按g生成配置文件并退出。
+
+1. 然后使用make编译并安装：
+```
+make
+make install 
+```
+
+## 编译SHUD
+
+编译信息保存在文件*Makefile*，其中关键的编译参数:
+
+1. *SUNDIALS_DIR*的保存路径（**非常关键**）. 默认值为 *~/sundials*，如果您已经安装到此路径，即可保持默认值。
+1.  OpenMP的路径。当您的系统支持OpenMP时，可根据实际安装路径配置。
+1. SRC_DIR路径。默认值为 `SRC_DIR = .`，即当前源码所在路径。
+1. BUILT_DIR路径，默认值为`BUILT_DIR = .` ，即当前源码所在路径。
+
+配置好*Makefile*文件即可编译，使用一下命令进行编译：
+```
+make clean
+make shud
+```
+
+更多克可选的编译参数：
+
+- `make all`        - 清理就的编译文件，并编译SHUD和SHUD_omp文件。
+- `make help`       - 展示编译的帮助信息。
+- `make shud`       - 编译shud模型的可执行文件。
+- `make shud_omp`   - 编译OpenMP支持的并行版本，编译后的可执行文件名为shud_omp。
+
+
+### OpenMP
+当需要并行计算时，需要安装OpenMP。一下为Mac OS上安装的参数：
+```
+brew install llvm clang
+brew install libomp
+compile flags for OpenMP: 
+  -Xpreprocessor -fopenmp -lomp
+Library/Include paths:
+  -L/usr/local/opt/libomp/lib 
+  -I/usr/local/opt/libomp/include
+```
+### 运行 SHUD 可执行文件
+运行SHUD模型，请在命令行内执行一下命令：
+```
+./shud <projectname>
+```
+
+![Default screen print of shud and command tips](Fig/CLI.png)
+命令的参数模式：
+
+```
+./shud [-0][-p projectfile] [-o output] [-n Num_Threads] <project_name>
+```
+- `-0` 空计算。读取输入文件并写出结果文件，但是内部没有计算。仅仅用于验证输入文件格式的可靠性和可用性。
+
+- `<project name>` 项目名称。所有的项目文件必须以此开头。
+
+- `[-p projectfile]` 指定的项目配置文件，文件中包含了所有输入文件的地址。
+
+- `[-o output_folder]` 制定的结果文件输出地址。默认的输出地址为``output/projname.out``。
+
+- `[-n Num_Threads]` 并行计算的线程数量。此参数仅在并行计算打开时可用。
+  
+
+
+当`shud` 程序正常运行时，屏幕输出应该如下图所示：
+![Screen print of SHUD running.](Fig/CLI_vs.png)
+
+## rSHUD
+This rSHUD is an R package. What you need is to install the package as a source code package.
+For example:
+
+```
+install_github('SHUD-System/rSHUD')
+```
+
+The prerequisite packages for rSHUD are:
+
+- Rcpp
+- reshape2
+- ggplot2
+- gridExtra
+- grid
+- fields
+- xts 
+- hydroGOF
+- zoo
+- raster (>= 2.1.0) 
+- sp 
+- rgeos 
+- RTriangle
+- rgdal (>= 1.1.0)
+- proj4
+- abind
+- utils
+- lubridate
+- geometry
+- methods
+- ncdf4
+- GGally
+- doParallel
+
+One of the required packages, RTriangle, must be installed via GitHub instead of CRAN, using command:
+```
+install_github('shulele/RTriangle/pkg') 
+```
+

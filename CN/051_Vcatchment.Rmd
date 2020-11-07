@@ -1,0 +1,35 @@
+
+## Example 1: V形流域  {##ex1}
+本案例源码和数据获取地址：
+<!-- [![DOI](https://zenodo.org/badge/226266189.svg)](https://zenodo.org/badge/latestdoi/226266189) or  -->
+[Github: https://github.com/Model-Intercomparison-Datasets/V-Catchment](https://github.com/Model-Intercomparison-Datasets/V-Catchment)
+
+V形流域（V-Catchment， VC）是一个可验证数值水文模型的理想化模型；此流域不仅有效测试了模型的地表径流、汇流、河川径流和水量平衡，也可验证数值方法的质量守恒，甚至模型的网格划分的无关性（Independancy）和收敛性（Convergence）。
+
+VC模拟空间有两个倾斜的坡面和链接坡面的倾斜河道组成。
+
+![Description of the V-Catchmenet](Fig/Example/vCat/Vcat.png)
+
+两个坡面是$800 \times 1000 m$，并且曼宁系数$n=0.015$的斜面.  居于坡面之间的河道宽度$20 m$宽，$1000 m$长，曼宁系数为$n=0.15$. 从坡面顶到河道的坡度为0.05（沿$x$轴方向），同时，从河道起点到重点的坡度为0.02，（沿$y$轴方向）。坡面与河流都是完全不透水表面，即无下渗，无植被。
+
+整个VC接收连续、均一降水，降雨强度$18 mm/hr$并持续90分钟，累计降雨量为$27mm$。理想假设无下渗和无蒸发，因此坡面的水量将完全流入河道，并从河道出口出离开此流域。因此模拟结果要满足坡面流出水量等于总降雨量，以及河道出流量等于总降雨量和坡面总流量，即质量守恒定律。
+
+$\sum P \cdot A = \sum Q_{slope} = \sum Q_{river}$
+
+
+### Shen等(2010) 中的结果
+
+文献中有多个模型研究重复了VC实验，其中Shen等(2010)输出了坡面向河道的流量，因此我们选用Shen等（2010）的结果进行对比。
+
+![Shen (2010) results](Fig/Example/vCat/Shen2010.png)
+
+经过分析我们发现Shen等(2010)的坡面流量存疑。解释如下：基于质量守恒和连续性定律，总输入（降雨）必须等于总的输出（坡面净流量或者河道出流量），而Shen等(2010)的结果中坡面流量仅为河道流量和降雨的20分之一。这现象可能是作者绘图过程中的失误导致；因此我们的实验中数字化了Shen等(2010)的结果，但是将坡面流量放大到20倍——即满足质量守恒的量级，然后对比实验。
+
+![SHUD triangular model domain in V-Catchment](Fig/Example/vCat/vc_mesh.png)
+
+使用SHUD对VC进行模拟，结果如下图。坡面径流和河道出流量都满足质量守恒定律和连续性定理，也能很好验证对于Shen等(2010)结果的推测。
+
+![Comparizon of SHUD modeling results versus Shen (2010).](Fig/Example/vCat/vcat_vs_vs.png)
+
+
+

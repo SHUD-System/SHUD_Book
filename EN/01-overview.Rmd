@@ -1,14 +1,4 @@
-
-This file is a user guide or technical documentation of the SHUD modeling system.
-PDF version of the User Guide is available via :[SHUD User Guide](https://www.shud.xyz/_book/SHUD_User_Guide.pdf)
-
-The Simulator for Hydrologic Unstructured Domain  (SHUD - pronounced  “SHOULD”) is a multi-process, multi-scale hydrological model where major  hydrological processes are fully coupled using the semi-discrete **Finite Volume Method** (FVM).
-
-**SHUDtoolbox** is an open-source GIS and hydrological analysis toolbox designed for the SHUD modeling system.  The SHUDtoolbox provides access to the digital data sets (terrain, forcing, and parameters) and tools necessary to drive the model, as well as a collection of GIS-based pre- and post-processing tools.
-
-Collectively the system is referred to as the **SHUD Modeling System**. 
-
-The SHUD and SHUDtoolbox is an open-source software, freely available for download at [SHUD website](https://SHUD-system.github.io) or [Github Page](https://github.com/SHUD-System/) along with installation and user guides.
+# Overview {#index}
 
 ## Standing on the shoulders of giants
 
@@ -44,13 +34,14 @@ Dr. Gopal Bhartt [@Bhatt2012] developed the PIHMgis with support of C++, Qt GUI 
 
 Dr. Yuninh Shi led and developed the MM-PIHM (Multi-Module PIHM), which embedded all modules from PIHM family, such as RT-PIHM, LE-PIHM, flux-PIHM, BGC-PIHM, etc. together. The sophisticated design and coupling of the MM-PIHM is the summit of the PIHM as a *Community Model* that combined all water-related modules together.
 
-- 2019 SHUD
-
+- 2020 SHUD
+Dr. Lele Shu led the SHUD deveopment and published the SHUD v1.0 on 2020 [@SHU2020_GMD].
   Based on the accumulated contribution of PIHM modeling and coupling with related researches, it is necessary to solve the known bugs and limitations,
   improve the performance of the model with parallel methods, and adopt new updates from SUNDIALS solver and programming strategy. 
 
 Several publications that may helps:
 
+- [@SHU2020_GMD]
 - [@Qu2004]
 - [@Qu2007]
 - [@Li2008]

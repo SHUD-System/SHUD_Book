@@ -1,4 +1,4 @@
-# Input files
+# Input files {#inputfiles}
 
 List of input files:
 

@@ -1,4 +1,4 @@
-## Example 3: 美国加州Cache河流域 {##ex3}
+## 美国加州Cache河流域
 
 本案例的源码获取地址：
 <!-- [![DOI](https://zenodo.org/badge/226413148.svg)](https://zenodo.org/badge/latestdoi/226413148) and -->

@@ -1,0 +1,43 @@
+--- 
+title: "Simulator for Hydrologic Unstructured Domains  (SHUD)"
+subtitle: 'Theory, Practice, and Application'
+author: "Lele Shu (shulele@lzb.ac.cn)"
+date: "`r Sys.Date()`"
+documentclass: scrbook
+output:
+  bookdown::pdf_book:
+    template: null
+    toc: true
+    toc_depth: 3
+    includes:
+      in_header: preamble.tex
+description: SHUD Book
+link-citations: yes
+bibliography: book.bib
+site: bookdown::bookdown_site
+biblio-style: apalike
+---
+
+# Preface {-#index}
+
+This is a book about the SHUD modeling system. We are trying to despict the theory, construction, and application of the model, as well as the big picture of the nature system.
+
+
+***
+
+
+
+> "The water flows eastward from their sources, resting neither by day or by night. Down they come inex- haustibly, yet the deeps are never full. The small [streams] become large and the heavy [waters of the sea] become light [and mount to the clouds]. This is [part of] the Rotation of the Tao.’ [water cycle]"
+> --- **The annals of Lü Buwei [Lü shi chun qiu], 239 BC**
+
+> Great water projects were already built thousands of years before the development of the concepts of conservation of mass, energy and momentum, (which are used in present-day water project designs) even existed
+> --- **Larry W. Mays, 2010**
+
+> We are not able to measure everything we would like to know about hydrological systems. We have, in fact, only a limited range of measurement techniques and a limited range of measurements in space and time. We therefore need a means of extrapolating from those available measurements in both space and time, particularly to ungauged catchments (where measurements are not available) and into the future (where measurements are not possible) to assess the likely impact of future hydrological change. 
+> --- **Keith Beven, 2012**
+
+> As scientists we are intrigued by the possibility of assembling our knowledge into a neat package to show that we do, after all, understand our science and its complex interrelated phenomena.
+> --- **W. M. Kohler, 1969**
+
+
+

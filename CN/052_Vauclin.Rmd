@@ -1,4 +1,4 @@
-## Example 2: Vauclin水槽箱试验   {##ex2}
+## Vauclin水槽箱试验
 
 本案例数据和源码获取地址：
 <!-- [![DOI](https://zenodo.org/badge/226266864.svg)](https://zenodo.org/badge/latestdoi/226266864) or -->

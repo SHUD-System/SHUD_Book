@@ -1,0 +1,44 @@
+--- 
+title: "SHUD水文模型"
+subtitle: '理论、方法和案例'
+author: "Lele Shu (shulele@lzb.ac.cn)"
+date: "`r Sys.Date()`"
+documentclass: gitbook
+output:
+  bookdown::pdf_book:
+    template: null
+    toc: true
+    toc_depth: 3
+    includes:
+      in_header: preamble.tex
+description: SHUD Book
+link-citations: yes
+bibliography: book.bib
+site: bookdown::bookdown_site
+biblio-style: apalike
+---
+
+# 前言 {-#index}
+
+这是一本有关SHUD模型的说明书，包含和模型的基本理论、构建、应用案例和程序设计。本书不仅仅向模型用户介绍SHUD模型本身，更想为水文和地球工作中展示以水为媒的自然过程。
+
+---
+
+> “云气西行，云云然冬夏不辍；水泉东流，日夜不休；上不竭，下不满；小为大，重为轻；圜道也。”
+>
+> ——**吕不韦 《吕氏春秋》, 公元前239年(?)**
+
+
+
+> "*上善若水*，*水善利万物*而不争"
+>
+> ——**老子《道德家》，公元前四世纪**
+
+
+
+> 科学技术是人工的演化。理论物理学家的理论验证需要等待宇宙现象的发生。科学家穷其一生也无法验证某些理论——因为自然现象的发生概率非常低。所以，人工实验就可以大幅度提高这种现象的发生概率。
+>
+> ——**陈平，2019**
+
+
+

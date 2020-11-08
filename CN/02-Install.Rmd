@@ -1,5 +1,7 @@
 #  安装 SHUD and rSHUD {#install}
 
+本章介绍SHUD模型和rSHUD的安装过程，以及必要的开发库的安装。
+
 ## SUNDIALS/CVODE
 SHUD模型的求解需要SUNDIAL中CVODE库的支持。
 SUNDIALS（SUite of Nonlinear and Differential/ALgebraic equation Solvers）由六个求解器组成；其中的 [**CVODE**](https://computation.llnl.gov/projects/sundials/cvode) 是一个用于求解刚性和非刚性常微分方程系统（初始值问题）的数值求解器，数学表达为： $y' = f(t,y)$. CVODE支持可变阶精度、可变步长数值方法。CVODE字母组合含义为“C版本的可变系数常微分方程求解器(Vriable-Coefficient Ordinary Differential Equation Solver)" 。使用SHUD模型只需要CVODE支持，因此无需安装SUNDIALS所有求解器，只需要安装CVODE即可。
@@ -10,6 +12,7 @@ SUNDIALS/CVODE的安装方法有两个种：（1）自行下载安装包； （2
 
 ### (1) 使用脚本安装CVODE
 
+源代码文件夹中的`configure.sh`文件是自动安装CVODE的脚步——可以自动从github上下载CVODE最新源代码并通过cmake编译并安装在`用户目录`下。
 
 
 ### (2) 自行下载并安装CVODE

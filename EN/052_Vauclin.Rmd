@@ -1,4 +1,4 @@
-## Example 2: Vauclin Experiment
+## Vauclin Experiment
 
 Code annd data are available at 
 [Github: https://github.com/Model-Intercomparison-Datasets/Vauclin1979](https://github.com/Model-Intercomparison-Datasets/Vauclin1979).

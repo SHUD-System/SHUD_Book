@@ -1,6 +1,6 @@
 --- 
-title: "SHUD模型说明书"
-subtitle: '理论、实践与案例'
+title: "Simulator for Hydrologic Unstructured Domains  (SHUD)"
+subtitle: 'Theory, Practice, and Application'
 author: "Lele Shu (shulele@lzb.ac.cn)"
 date: "`r Sys.Date()`"
 documentclass: scrbook

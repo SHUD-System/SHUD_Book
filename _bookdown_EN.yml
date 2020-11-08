@@ -5,7 +5,8 @@ language:
     chapter_name: "Chapter "
 output_dir: "../shud.xyz/static/Book_EN"
 rmd_files: [
-"EN/index.Rmd",
+"index.Rmd",
+"EN/00-preface.Rmd",
 "EN/01-overview.Rmd",
 "EN/02-Install.Rmd",
 "EN/03-Inputfiles.Rmd",

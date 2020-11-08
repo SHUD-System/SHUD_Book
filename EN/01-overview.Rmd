@@ -1,4 +1,13 @@
-# Overview {#index}
+# Overview {#overview}
+
+The Simulator for Hydrologic Unstructured Domains  (SHUD - pronounced  “SHOULD”) is a multi-process, multi-scale hydrological model where major  hydrological processes are fully coupled using the semi-discrete **Finite Volume Method** (FVM).
+
+**rSHUD** is an open-source GIS and hydrological analysis toolbox designed for the SHUD modeling system.  The rSHUD provides access to the digital data sets (terrain, forcing, and parameters) and tools necessary to drive the model, as well as a collection of GIS-based pre- and post-processing tools.
+
+Collectively the system is referred to as the **SHUD Modeling System**. 
+
+The SHUD and rSHUD is an open-source software, freely available for download at [SHUD website](https://SHUD-system.github.io) or [Github Page](https://github.com/SHUD-System/) along with installation and user guides.
+
 
 ## Standing on the shoulders of giants
 

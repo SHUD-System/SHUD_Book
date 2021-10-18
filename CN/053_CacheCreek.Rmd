@@ -2,16 +2,17 @@
 
 本案例的源码获取地址：
 <!-- [![DOI](https://zenodo.org/badge/226413148.svg)](https://zenodo.org/badge/latestdoi/226413148) and -->
-[Github: https://github.com/Model-Intercomparison-Datasets/Cache-Creek](https://github.com/Model-Intercomparison-Datasets/Cache-Creek). The data is big. If you need, please email to [Lele Shu](mailto:shulele@lzb.ac.cn)
+[Github: https://github.com/Model-Intercomparison-Datasets/Cache-Creek](https://github.com/Model-Intercomparison-Datasets/Cache-Creek). 数据非常大，如果需要原始数据，请联系作者 [Lele Shu](mailto:shulele@lzb.ac.cn)
 
 
 ### Cache Creek Watershed
 
-The Cache Creek Watershed (CCW) is a headwater catchment with area $196.4 km^2$  in the Sacramento Watershed in Northern California (Figures \ref{fig:sh} (a), (b) and (c)). The elevation ranges from $450 m$ to $1800 m$, with a $0.38 m/m$ average slope which is very steep, and hence a particularly difficult watershed for hydrologic models to simulate.
+CCW是北萨克拉门托河上游的一个支流，面积196.4平方公里（下图），海拔高程450米至1800米，平均坡度38% $ L/L $（陡峭地形是对数值方法水文模型的挑战）。
+
 
 ![Location and data for Cache Creek Watershed](Fig/Example/CacheCreek/sac5_map.png)
 
-According to NLDAS-2, between 2000 and 2017 the mean temperature and precipitation was $12.8 ^\circ C$ and $\approx 817 mm$, respectively, in this catchment. Precipitation is unevenly distributed through the year, with winter and spring precipitation being the vast majority of the contribution to the annual total (Fig. \ref{fig:sh_pt}.
+根据2000-2017年间，NLDAS-2数据，流域内平均气温12.8度，年降雨量817毫米，然而降雨年内、年际分布不均，属于典型地中海气候——降雨集中在冬天、夏天温度高且 干旱无雨。
 
 ![Precipitation and temperature](Fig/Example/CacheCreek/sac5_PT.png)
 

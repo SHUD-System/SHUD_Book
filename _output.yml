@@ -5,7 +5,7 @@ bookdown::gitbook:
       before: |
         <li><a href="./">SHUD Book</a></li>
       after: |
-        <li><a href="mailto:<Lele Shu>shulele@lzb.ac.cn" target="blank">联系作者</a></li>
+        <li><a href="mailto:<Lele Shu>shulele@lzb.ac.cn" target="blank">Contact us</a></li>
     download: ["pdf", "epub"]
 bookdown::pdf_book:
   includes:

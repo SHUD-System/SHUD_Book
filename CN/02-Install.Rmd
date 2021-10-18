@@ -8,11 +8,11 @@ SUNDIALS（SUite of Nonlinear and Differential/ALgebraic equation Solvers）由�
 
 因为SUNDIALS/CVODE持续更新中，代码和函数定义等等变化较大，因此SHUD模型通常仅支持CVODE较新版本，并非所有版本都可支持。
 
-SUNDIALS/CVODE的安装方法有两个种：（1）自行下载安装包； （2）使用SHUD源代码的安装脚本。
+SUNDIALS/CVODE的安装方法有两种：（1）自行下载安装包； （2）使用SHUD源代码的安装脚本。
 
 ### (1) 使用脚本安装CVODE
 
-源代码文件夹中的`configure.sh`文件是自动安装CVODE的脚步——可以自动从github上下载CVODE最新源代码并通过cmake编译并安装在`用户目录`下。
+源代码文件夹中的`configure.sh`文件是自动安装CVODE的脚本——可以自动从github上下载CVODE最新源代码并通过cmake编译并安装在`用户目录`下。
 
 
 ### (2) 自行下载并安装CVODE
@@ -75,22 +75,22 @@ make install
 1. SRC_DIR路径。默认值为 `SRC_DIR = .`，即当前源码所在路径。
 1. BUILT_DIR路径，默认值为`BUILT_DIR = .` ，即当前源码所在路径。
 
-配置好*Makefile*文件即可编译，使用一下命令进行编译：
+配置好*Makefile*文件即可编译，使用以下命令进行编译：
 ```
 make clean
 make shud
 ```
 
-更多克可选的编译参数：
+更多可选的编译参数：
 
-- `make all`        - 清理就的编译文件，并编译SHUD和SHUD_omp文件。
+- `make all`        - 清理旧的编译文件，并编译SHUD和SHUD_omp文件。
 - `make help`       - 展示编译的帮助信息。
 - `make shud`       - 编译shud模型的可执行文件。
 - `make shud_omp`   - 编译OpenMP支持的并行版本，编译后的可执行文件名为shud_omp。
 
 
-### OpenMP
-当需要并行计算时，需要安装OpenMP。一下为Mac OS上安装的参数：
+### OpenMP（可选）
+当需要并行计算时，需要安装OpenMP。以下为Mac OS上安装的参数：
 ```
 brew install llvm clang
 brew install libomp
@@ -128,14 +128,22 @@ Library/Include paths:
 ![Screen print of SHUD running.](Fig/CLI_vs.png)
 
 ## rSHUD
-This rSHUD is an R package. What you need is to install the package as a source code package.
-For example:
+rSHUD是一个标准R包，但尚未向CRAN提交，因此需要通过github以源码方式安装。在R环境中执行以下命令即可自动安装rSHUD。
+
+如果您的电脑上尚未在R环境中安装`devtools`，请先安装。
+
 
 ```
-install_github('SHUD-System/rSHUD')
+install.packages('devtools')
 ```
 
-The prerequisite packages for rSHUD are:
+然后通过`devtools`从github上安装rSHUD。
+```
+devtools::install_github('SHUD-System/rSHUD')
+```
+
+
+rSHUD依赖的R工具包包括：
 
 - Rcpp
 - reshape2
@@ -161,8 +169,8 @@ The prerequisite packages for rSHUD are:
 - GGally
 - doParallel
 
-One of the required packages, RTriangle, must be installed via GitHub instead of CRAN, using command:
+除以上安装包以外，需要用户自行安装github上的`RTriangle`包；建议在安装完其他包之后，最后安装`RTriangle。
 ```
-install_github('shulele/RTriangle/pkg') 
+devtools::install_github('shulele/RTriangle/pkg') 
 ```
 

@@ -4,9 +4,9 @@
 
 
 
-![The Sun God of Perietal Art (Source: wiki)](Fig/Example/Yanhuacun/sun.jpg)
+![岩画上的太阳神(Source: wiki)](Fig/Example/Yanhuacun/sun.jpg)
 
 
 
 
-![Triangular modeling domain of the Yanhua Village)](Fig/Example/Yanhuacun/map.png)
+![宁夏岩画村山洪模拟使用的三角形网格)](Fig/Example/Yanhuacun/map.png)
